@@ -7,16 +7,16 @@ export default class HybridTrieNode {
   middle: HybridTrieNode | null; // Fils milieu
   right: HybridTrieNode | null; // Fils droit
 
-  constructor(char: string) {
+  constructor(char: string, isEndOfWord = false) {
     this.char = char;
-    this.isEndOfWord = false;
+    this.isEndOfWord = isEndOfWord;
     this.left = null;
     this.middle = null;
     this.right = null;
   }
 
   search(word: string): boolean {
-    if (!word) return this.isEndOfWord;
+    if (word.length === 1) return this.isEndOfWord;
     const char = word[0];
 
     if (char < this.char) {
@@ -29,10 +29,11 @@ export default class HybridTrieNode {
   }
 
   insert(word: string): HybridTrieNode {
-    if (!word) {
+    if (word.length === 1) {
       this.isEndOfWord = true;
       return this;
     }
+
     const char = word[0];
 
     if (char < this.char) {
@@ -43,7 +44,8 @@ export default class HybridTrieNode {
       this.right = this.right.insert(word);
     } else {
       this.middle ??= new HybridTrieNode(word[1]);
-      this.middle = this.middle.insert(word.slice(1));
+      if (word.length > 1) this.middle = this.middle.insert(word.slice(1));
+      else this.middle.isEndOfWord = true;
     }
 
     return this;
@@ -53,7 +55,7 @@ export default class HybridTrieNode {
     this.left?.display(prefix);
 
     if (this.isEndOfWord) {
-      console.log(prefix);
+      console.log(prefix + this.char);
     }
 
     this.middle?.display(prefix + this.char);

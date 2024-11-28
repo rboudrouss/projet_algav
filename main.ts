@@ -8,7 +8,6 @@ let mots =
     .split(/\s+/) // Diviser en mots par espaces
     .filter((mot) => mot.length > 0); // Retirer les mots vides
 
-
 console.log("Patricia Trie");
 
 let trie = new PatriciaTrie();
@@ -23,9 +22,12 @@ console.log("Hybrid Trie");
 
 let hybridTrie = new HybridTrie();
 
-mots.forEach((mot) => hybridTrie.insert(mot));
+mots.forEach((mot) => {
+  hybridTrie.insert(mot);
+  console.log("insertion de " + mot + " ----------------------- ");
+  hybridTrie.display();
+});
 
 hybridTrie.display();
 
-
-console.log(hybridTrie.search("apel"));
+console.log(hybridTrie.search("pome"));

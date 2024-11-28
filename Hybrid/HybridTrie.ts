@@ -8,11 +8,12 @@ export default class HybridTrie {
   }
 
   // Insertion
-  insert(word: string): void {
+  insert(word: string) {
     if (!this.root) {
       this.root = new HybridTrieNode(word[0]);
     }
     this.root.insert(word);
+    return this;
   }
 
   // Recherche

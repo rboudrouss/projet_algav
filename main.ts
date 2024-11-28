@@ -1,4 +1,4 @@
-import { PatriciaTrie } from "./patricia";
+import { PatriciaTrie } from "./Patricia";
 
 let mots =
   `A quel genial professeur de dactylographie sommes nous redevables de la superbe phrase ci dessous, un modele du genre, que toute dactylo connait par coeur puisque elle fait appel a chacune des touches du clavier de la machine a ecrire ?`

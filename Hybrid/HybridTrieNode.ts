@@ -114,4 +114,89 @@ export default class HybridTrieNode {
       );
     });
   }
+
+  count(): number {
+    let count = this.isEndOfWord ? 1 : 0;
+    count += this.left?.count() ?? 0;
+    count += this.middle?.count() ?? 0;
+    count += this.right?.count() ?? 0;
+    return count;
+  }
+
+  listWords(prefix = ""): string[] {
+    const words: string[] = [];
+
+    if (this.isEndOfWord) words.push(prefix);
+
+    if (this.left) words.push(...this.left.listWords(prefix));
+    if (this.middle) words.push(...this.middle.listWords(prefix + this.char));
+    if (this.right) words.push(...this.right.listWords(prefix));
+
+    return words;
+  }
+
+  countNullNodes(): number {
+    let count = 0;
+    if (!this.left) count++;
+    if (!this.middle) count++;
+    if (!this.right) count++;
+    count += this.left?.countNullNodes() ?? 0;
+    count += this.middle?.countNullNodes() ?? 0;
+    count += this.right?.countNullNodes() ?? 0;
+    return count;
+  }
+
+  height(): number {
+    let height = 0;
+    height = Math.max(
+      height,
+      1 + (this.left?.height() ?? 0),
+      1 + (this.middle?.height() ?? 0),
+      1 + (this.right?.height() ?? 0)
+    );
+    return height;
+  }
+
+  averageDepth(): number {
+    let sum = 0;
+    sum += this.left?.averageDepth() ?? 0;
+    sum += this.middle?.averageDepth() ?? 0;
+    sum += this.right?.averageDepth() ?? 0;
+    return sum / 3 + 1;
+  }
+
+  // FIXME pas sûr de la méthode	
+  countPrefixes(prefix: string): number {
+    if (!prefix) return this.count();
+    const char = prefix[0];
+    if (char < this.char) return this.left?.countPrefixes(prefix) ?? 0;
+    if (char > this.char) return this.right?.countPrefixes(prefix) ?? 0;
+    return this.middle?.countPrefixes(prefix.slice(1)) ?? 0;
+  }
+
+  // FIXME pas sûr de la méthode
+  merge(node: HybridTrieNode): HybridTrieNode {
+    if (node.isEndOfWord) this.isEndOfWord = true;
+    if (node.left) {
+      if (this.left) this.left.merge(node.left);
+      else this.left = node.left;
+    }
+    if (node.middle) {
+      if (this.middle) this.middle.merge(node.middle);
+      else this.middle = node.middle;
+    }
+    if (node.right) {
+      if (this.right) this.right.merge(node.right);
+      else this.right = node.right;
+    }
+    return this;
+  }
+
+  // FIXME pas sûr de la méthode
+  balance(): HybridTrieNode {
+    const words = this.listWords();
+    const newRoot = new HybridTrieNode(words[0][0]);
+    words.forEach((word) => newRoot.insert(word));
+    return newRoot;
+  }
 }

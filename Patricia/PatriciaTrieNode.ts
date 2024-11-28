@@ -117,4 +117,66 @@ export default class PatriciaTrieNode {
     // Parcourir les enfants avec un niveau d'indentation supplémentaire
     for (const child of this.children.values()) child.display(indent + "  ");
   }
+
+  count() {
+    let count = this.isEndOfWord ? 1 : 0;
+    for (const child of this.children.values()) count += child.count();
+    return count;
+  }
+
+  listWords(prefix = ""): string[] {
+    const words: string[] = [];
+
+    if (this.isEndOfWord) words.push(prefix);
+
+    for (const [key, child] of this.children)
+      words.push(...child.listWords(prefix + key));
+
+    return words;
+  }
+
+  countNullNodes(): number {
+    let count = 0;
+    for (const child of this.children.values())
+      count += child.countNullNodes();
+    if (this.children.size === 0) count++; // HACK .size c'est un peu tricher pour l'exo
+    return count;
+  }
+
+  height(): number {
+    let height = 0;
+    for (const child of this.children.values())
+      height = Math.max(height, child.height());
+    return height + 1;
+  }
+
+  averageDepth(): number {
+    let sum = 0;
+    for (const child of this.children.values())
+      sum += child.averageDepth();
+    return sum / this.children.size + 1; // HACK .size c'est un peu tricher pour l'exo
+  }
+
+  // FIXME pas sûr de la méthode	
+  countPrefixes(prefix: string): number {
+    if (!prefix) return this.count();
+    for (const [key, child] of this.children)
+      if (prefix.startsWith(key)) return child.countPrefixes(prefix.slice(key.length));
+    return 0;
+  }
+
+  // FIXME pas sûr de la méthode	
+  merge(node: PatriciaTrieNode): PatriciaTrieNode {
+    if (node.isEndOfWord) this.isEndOfWord = true;
+    for (const [key, child] of node.children) {
+      if (this.children.has(key)) {
+        this.children.get(key)!.merge(child);
+      } else {
+        this.children.set(key, child);
+      }
+    }
+    return this;
+  }
+
+
 }

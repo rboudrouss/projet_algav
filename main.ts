@@ -24,10 +24,9 @@ let hybridTrie = new HybridTrie();
 
 mots.forEach((mot) => {
   hybridTrie.insert(mot);
-  console.log("insertion de " + mot + " ----------------------- ");
   hybridTrie.display();
 });
 
 hybridTrie.display();
 
-console.log(hybridTrie.search("pome"));
+hybridTrie.display();

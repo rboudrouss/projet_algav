@@ -51,6 +51,28 @@ export default class HybridTrieNode {
     return this;
   }
 
+  delete(word: string): HybridTrieNode | null {
+    if (word.length === 1) {
+      this.isEndOfWord = false;
+      if (!this.left && !this.middle && !this.right) return null;
+      return this;
+    }
+
+    const char = word[0];
+
+    if (char < this.char) {
+      this.left = this.left?.delete(word) ?? null;
+    } else if (char > this.char) {
+      this.right = this.right?.delete(word) ?? null;
+    } else {
+      this.middle = this.middle?.delete(word.slice(1)) ?? null;
+    }
+
+    // HACK pour supprimer les noeuds vides, y a probablement une meilleure façon de faire directement dans les conditions ci-dessus
+    if (!this.left && !this.middle && !this.right && !this.isEndOfWord) return null;
+    return this;
+  }
+
   display(prefix = ""): void {
     this.left?.display(prefix);
 
@@ -58,11 +80,15 @@ export default class HybridTrieNode {
       console.log(prefix + this.char);
     }
 
+    if (!this.middle && !this.left && !this.right && !this.isEndOfWord) {
+      console.log(prefix + this.char + " (fin de branche (isEndOfWord=False))");
+    }
+
     this.middle?.display(prefix + this.char);
     this.right?.display(prefix);
   }
 
-  displayOld(prefix="", isTail = true): void {
+  displayOld(prefix = "", isTail = true): void {
     // Afficher le nœud courant
     console.log(
       `${prefix}${isTail ? "└── " : "├── "}${this.char}${
@@ -82,7 +108,10 @@ export default class HybridTrieNode {
 
     const nonNullChildren = children.filter((c) => c.child !== null);
     nonNullChildren.forEach((child, index) => {
-      child.child?.displayOld(childPrefix, index === nonNullChildren.length - 1);
+      child.child?.displayOld(
+        childPrefix,
+        index === nonNullChildren.length - 1
+      );
     });
   }
 }

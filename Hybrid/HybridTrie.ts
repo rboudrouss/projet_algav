@@ -26,4 +26,10 @@ export default class HybridTrie {
     this.root?.display();
   }
 
+  // Suppression
+  delete(word: string): HybridTrie {
+    if (!this.root) return this;
+    this.root = this.root.delete(word);
+    return this;
+  }
 }

@@ -1,18 +1,18 @@
 export default class PatriciaTrieNode {
   label: string;
   // Dans l'exo il est demandé d'utiliser un caractère pour marquer la fin d'un mot, j'utilise un booléen pour pas avoir la contrainte de l'encodage
-  isEndOfWord: boolean;
+  is_end_of_word: boolean;
   // ici un Map est plus approprié qu'un objet pour stocker les enfants
   children: Map<string, PatriciaTrieNode>;
 
-  constructor(label: string = "", isEndOfWord: boolean = false) {
+  constructor(label: string = "", is_end_of_word: boolean = false) {
     this.label = label;
-    this.isEndOfWord = isEndOfWord;
+    this.is_end_of_word = is_end_of_word;
     this.children = new Map();
   }
 
   search(word: string): boolean {
-    if (!word) return this.isEndOfWord;
+    if (!word) return this.is_end_of_word;
 
     for (const [key, child] of this.children)
       if (word.startsWith(key)) return child.search(word.slice(key.length));
@@ -22,7 +22,7 @@ export default class PatriciaTrieNode {
 
   insert(word: string): PatriciaTrieNode {
     if (!word) {
-      this.isEndOfWord = true;
+      this.is_end_of_word = true;
       return this;
     }
 
@@ -56,12 +56,12 @@ export default class PatriciaTrieNode {
       const remainingWord = word.slice(commonPrefixLength);
 
       // Nouveau noeud pour l'ancien suffixe
-      const newChild = new PatriciaTrieNode(oldSuffix, child.isEndOfWord);
+      const newChild = new PatriciaTrieNode(oldSuffix, child.is_end_of_word);
       newChild.children = child.children;
 
       // Mettre à jour l'enfant existant
       child.label = commonPrefix;
-      child.isEndOfWord = false;
+      child.is_end_of_word = false;
       child.children = new Map();
       child.children.set(oldSuffix, newChild);
 
@@ -72,7 +72,7 @@ export default class PatriciaTrieNode {
           new PatriciaTrieNode(remainingWord, true)
         );
       } else {
-        child.isEndOfWord = true;
+        child.is_end_of_word = true;
       }
 
       this.children.set(commonPrefix, child);
@@ -86,7 +86,7 @@ export default class PatriciaTrieNode {
 
   delete(word: string): PatriciaTrieNode | null {
     if (!word) {
-      this.isEndOfWord = false;
+      this.is_end_of_word = false;
       // Si le noeud n'a pas d'enfants, on peut le supprimer
       if (this.children.size === 0) return null;
       return this;
@@ -100,7 +100,7 @@ export default class PatriciaTrieNode {
         if (result === null) this.children.delete(key);
 
         // Si ce noeud n'est plus une fin de mot et n'a pas d'enfants, on peut le supprimer
-        if (!this.isEndOfWord && this.children.size === 0) return null;
+        if (!this.is_end_of_word && this.children.size === 0) return null;
 
         return this;
       }
@@ -111,7 +111,7 @@ export default class PatriciaTrieNode {
 
   display(indent = ""): void {
     console.log(
-      `${indent}- ${this.label} ${this.isEndOfWord ? "(fin de mot)" : ""}`
+      `${indent}- ${this.label} ${this.is_end_of_word ? "(fin de mot)" : ""}`
     );
 
     // Parcourir les enfants avec un niveau d'indentation supplémentaire
@@ -119,7 +119,7 @@ export default class PatriciaTrieNode {
   }
 
   count() {
-    let count = this.isEndOfWord ? 1 : 0;
+    let count = this.is_end_of_word ? 1 : 0;
     for (const child of this.children.values()) count += child.count();
     return count;
   }
@@ -127,7 +127,7 @@ export default class PatriciaTrieNode {
   listWords(prefix = ""): string[] {
     const words: string[] = [];
 
-    if (this.isEndOfWord) words.push(prefix);
+    if (this.is_end_of_word) words.push(prefix);
 
     for (const [key, child] of this.children)
       words.push(...child.listWords(prefix + key));
@@ -167,7 +167,7 @@ export default class PatriciaTrieNode {
 
   // FIXME pas sûr de la méthode	
   merge(node: PatriciaTrieNode): PatriciaTrieNode {
-    if (node.isEndOfWord) this.isEndOfWord = true;
+    if (node.is_end_of_word) this.is_end_of_word = true;
     for (const [key, child] of node.children) {
       if (this.children.has(key)) {
         this.children.get(key)!.merge(child);

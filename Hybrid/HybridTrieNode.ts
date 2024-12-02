@@ -2,21 +2,21 @@
 
 export default class HybridTrieNode {
   char: string; // Le caractère stocké dans le nœud
-  isEndOfWord: boolean; // Indique si c'est la fin d'un mot
+  is_end_of_word: boolean; // Indique si c'est la fin d'un mot
   left: HybridTrieNode | null; // Fils gauche
   middle: HybridTrieNode | null; // Fils milieu
   right: HybridTrieNode | null; // Fils droit
 
-  constructor(char: string, isEndOfWord = false) {
+  constructor(char: string, is_end_of_word = false) {
     this.char = char;
-    this.isEndOfWord = isEndOfWord;
+    this.is_end_of_word = is_end_of_word;
     this.left = null;
     this.middle = null;
     this.right = null;
   }
 
   search(word: string): boolean {
-    if (word.length === 1) return this.isEndOfWord;
+    if (word.length === 1) return this.is_end_of_word;
     const char = word[0];
 
     if (char < this.char) {
@@ -30,7 +30,7 @@ export default class HybridTrieNode {
 
   insert(word: string): HybridTrieNode {
     if (word.length === 1) {
-      this.isEndOfWord = true;
+      this.is_end_of_word = true;
       return this;
     }
 
@@ -45,7 +45,7 @@ export default class HybridTrieNode {
     } else {
       this.middle ??= new HybridTrieNode(word[1]);
       if (word.length > 1) this.middle = this.middle.insert(word.slice(1));
-      else this.middle.isEndOfWord = true;
+      else this.middle.is_end_of_word = true;
     }
 
     return this;
@@ -53,7 +53,7 @@ export default class HybridTrieNode {
 
   delete(word: string): HybridTrieNode | null {
     if (word.length === 1) {
-      this.isEndOfWord = false;
+      this.is_end_of_word = false;
       if (!this.left && !this.middle && !this.right) return null;
       return this;
     }
@@ -69,19 +69,19 @@ export default class HybridTrieNode {
     }
 
     // HACK pour supprimer les noeuds vides, y a probablement une meilleure façon de faire directement dans les conditions ci-dessus
-    if (!this.left && !this.middle && !this.right && !this.isEndOfWord) return null;
+    if (!this.left && !this.middle && !this.right && !this.is_end_of_word) return null;
     return this;
   }
 
   display(prefix = ""): void {
     this.left?.display(prefix);
 
-    if (this.isEndOfWord) {
+    if (this.is_end_of_word) {
       console.log(prefix + this.char);
     }
 
-    if (!this.middle && !this.left && !this.right && !this.isEndOfWord) {
-      console.log(prefix + this.char + " (fin de branche (isEndOfWord=False))");
+    if (!this.middle && !this.left && !this.right && !this.is_end_of_word) {
+      console.log(prefix + this.char + " (fin de branche (is_end_of_word=False))");
     }
 
     this.middle?.display(prefix + this.char);
@@ -92,7 +92,7 @@ export default class HybridTrieNode {
     // Afficher le nœud courant
     console.log(
       `${prefix}${isTail ? "└── " : "├── "}${this.char}${
-        this.isEndOfWord ? " (fin de mot)" : ""
+        this.is_end_of_word ? " (fin de mot)" : ""
       }`
     );
 
@@ -116,7 +116,7 @@ export default class HybridTrieNode {
   }
 
   count(): number {
-    let count = this.isEndOfWord ? 1 : 0;
+    let count = this.is_end_of_word ? 1 : 0;
     count += this.left?.count() ?? 0;
     count += this.middle?.count() ?? 0;
     count += this.right?.count() ?? 0;
@@ -126,7 +126,7 @@ export default class HybridTrieNode {
   listWords(prefix = ""): string[] {
     const words: string[] = [];
 
-    if (this.isEndOfWord) words.push(prefix);
+    if (this.is_end_of_word) words.push(prefix);
 
     if (this.left) words.push(...this.left.listWords(prefix));
     if (this.middle) words.push(...this.middle.listWords(prefix + this.char));
@@ -176,7 +176,7 @@ export default class HybridTrieNode {
 
   // FIXME pas sûr de la méthode
   merge(node: HybridTrieNode): HybridTrieNode {
-    if (node.isEndOfWord) this.isEndOfWord = true;
+    if (node.is_end_of_word) this.is_end_of_word = true;
     if (node.left) {
       if (this.left) this.left.merge(node.left);
       else this.left = node.left;

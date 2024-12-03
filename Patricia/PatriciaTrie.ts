@@ -1,4 +1,4 @@
-import PatriciaTrieNode from "./PatriciaTrieNode";
+import PatriciaTrieNode, { PatriciaTrieNodeI } from "./PatriciaTrieNode";
 
 // TODO hmmm cette classe est-elle vraiment nécessaire ?
 export default class PatriciaTrie {
@@ -64,5 +64,11 @@ export default class PatriciaTrie {
   merge(trie: PatriciaTrie): PatriciaTrie {
     this.root.merge(trie.root);
     return this;
+  }
+  
+  static fromJson(json: PatriciaTrieNodeI): PatriciaTrie {
+    const trie = new PatriciaTrie();
+    trie.root = PatriciaTrieNode.fromJson(json);
+    return trie;
   }
 }

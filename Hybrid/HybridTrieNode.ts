@@ -1,5 +1,3 @@
-// FIXME quand c'est fin de mot j'ai des undefined
-
 export default class HybridTrieNode {
   char: string; // Le caractère stocké dans le nœud
   is_end_of_word: boolean; // Indique si c'est la fin d'un mot
@@ -69,7 +67,8 @@ export default class HybridTrieNode {
     }
 
     // HACK pour supprimer les noeuds vides, y a probablement une meilleure façon de faire directement dans les conditions ci-dessus
-    if (!this.left && !this.middle && !this.right && !this.is_end_of_word) return null;
+    if (!this.left && !this.middle && !this.right && !this.is_end_of_word)
+      return null;
     return this;
   }
 
@@ -81,7 +80,9 @@ export default class HybridTrieNode {
     }
 
     if (!this.middle && !this.left && !this.right && !this.is_end_of_word) {
-      console.log(prefix + this.char + " (fin de branche (is_end_of_word=False))");
+      console.log(
+        prefix + this.char + " (fin de branche (is_end_of_word=False))"
+      );
     }
 
     this.middle?.display(prefix + this.char);
@@ -165,7 +166,7 @@ export default class HybridTrieNode {
     return sum / 3 + 1;
   }
 
-  // FIXME pas sûr de la méthode	
+  // FIXME pas sûr de la méthode
   countPrefixes(prefix: string): number {
     if (!prefix) return this.count();
     const char = prefix[0];
@@ -199,4 +200,20 @@ export default class HybridTrieNode {
     words.forEach((word) => newRoot.insert(word));
     return newRoot;
   }
+
+  static fromJSON(json: HybridTrieNodeI): HybridTrieNode {
+    const node = new HybridTrieNode(json.char, json.is_end_of_word);
+    node.left = json.left ? HybridTrieNode.fromJSON(json.left) : null;
+    node.middle = json.middle ? HybridTrieNode.fromJSON(json.middle) : null;
+    node.right = json.right ? HybridTrieNode.fromJSON(json.right) : null;
+    return node;
+  }
+}
+
+export interface HybridTrieNodeI {
+  char: string;
+  is_end_of_word: boolean;
+  left: HybridTrieNodeI | null;
+  middle: HybridTrieNodeI | null;
+  right: HybridTrieNodeI | null;
 }

@@ -2,7 +2,7 @@
   "tasks": {
     "dev": "deno run --watch main.ts",
     "start": "deno run main.ts",
-    "cli": "deno run --allow-read cli.ts"
+    "cli": "deno run cli.ts --allow-read --allow-write"
   },
   "unstable": [
     "sloppy-imports"

@@ -30,7 +30,3 @@ mots.forEach((mot) => {
 hybridTrie.display();
 
 hybridTrie.display();
-
-let a = "daA";
-
-a = 12

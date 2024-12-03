@@ -1,4 +1,4 @@
-import HybridTrieNode from "./HybridTrieNode";
+import HybridTrieNode, { HybridTrieNodeI } from "./HybridTrieNode";
 
 export default class HybridTrie {
   root: HybridTrieNode | null;
@@ -73,6 +73,18 @@ export default class HybridTrie {
       this.root.merge(trie.root);
     }
     return this;
+  }
+  
+  static fromJSON(json: HybridTrieNodeI): HybridTrie {
+    const trie = new HybridTrie();
+    try {
+      trie.root = HybridTrieNode.fromJSON(json);
+    } catch (err) {
+      console.error("Erreur lors de la conversion du JSON en HybridTrie");
+      console.error(err);
+      Deno.exit();
+    }
+    return trie;
   }
 
 }

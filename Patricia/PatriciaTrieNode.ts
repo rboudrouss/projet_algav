@@ -1,3 +1,8 @@
+/*
+* Dans le code qui suit on utilise la function Map.entries et Map.values pour parcourir les enfants
+* et c'est peut-être un peu tricher. Si on veut vraiment respecter l'exo (ou si on était dans un langage plus proche du hardware)
+* comment on ferait ? 
+*/
 export default class PatriciaTrieNode {
   label: string;
   // Dans l'exo il est demandé d'utiliser un caractère pour marquer la fin d'un mot, j'utilise un booléen pour pas avoir la contrainte de l'encodage
@@ -177,6 +182,21 @@ export default class PatriciaTrieNode {
     }
     return this;
   }
+  
+  static fromJson(json: PatriciaTrieNodeI): PatriciaTrieNode {
+    const node = new PatriciaTrieNode(json.label, json.is_end_of_word);
+    node.children = new Map(
+      Object.entries(json.children).map(([key, value]) => [
+        key,
+        PatriciaTrieNode.fromJson(value),
+      ])
+    );
+    return node;
+  }
+}
 
-
+export interface PatriciaTrieNodeI {
+  label: string;
+  is_end_of_word: boolean;
+  children: Record<string, PatriciaTrieNodeI>;
 }

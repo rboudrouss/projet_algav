@@ -1,8 +1,16 @@
 /*
-* Dans le code qui suit on utilise la function Map.entries et Map.values pour parcourir les enfants
-* et c'est peut-être un peu tricher. Si on veut vraiment respecter l'exo (ou si on était dans un langage plus proche du hardware)
-* comment on ferait ? 
-*/
+ * Ici, on utilise un booléen pour ne pas avoir la contrainte de l'encodage.
+ * Aussi, on utilise un Map pour stocker les enfants et on a recours à des méthodes haut niveau pour parcourir les enfants et déterminer si elle est vide.
+ * C'est un peu tricher pour l'exo. Mais c'est voulu pour ne pas contraindre l'implémentation à un encodage particulier.
+ * 
+ * Si nous devions implémenter cela dans un langage de programmation bas niveau, (ou avoir une compréhension plus profonde de la structure de données) :
+ *   - On pourrait utiliser un caractère pour marquer la fin d'un mot. (Remplacer le booléen)
+ *   - On pourrait utiliser un tableau pour stocker les enfants. (Remplacer le Map) Pour cela plusieurs solutions sont possibles :
+ *    - On pourrait utiliser un tableau de taille fixe (26 pour les lettres de l'alphabet ou 256 caractère unicode (-1 celui qu'on utilise pour marquer la fin)) et utiliser l'indice de la lettre pour accéder à l'enfant.
+ *    - On pourrait utiliser une Hashtable pour stocker les enfants. (Tableau + Hashage)
+ *    - On pourrait utiliser un tableau dynamique et parcourir le tableau pour trouver l'enfant. (Pas la meilleure solution)
+ */
+// FIXME
 export default class PatriciaTrieNode {
   label: string;
   // Dans l'exo il est demandé d'utiliser un caractère pour marquer la fin d'un mot, j'utilise un booléen pour pas avoir la contrainte de l'encodage
@@ -142,8 +150,7 @@ export default class PatriciaTrieNode {
 
   countNullNodes(): number {
     let count = 0;
-    for (const child of this.children.values())
-      count += child.countNullNodes();
+    for (const child of this.children.values()) count += child.countNullNodes();
     if (this.children.size === 0) count++; // HACK .size c'est un peu tricher pour l'exo
     return count;
   }
@@ -157,20 +164,20 @@ export default class PatriciaTrieNode {
 
   averageDepth(): number {
     let sum = 0;
-    for (const child of this.children.values())
-      sum += child.averageDepth();
+    for (const child of this.children.values()) sum += child.averageDepth();
     return sum / this.children.size + 1; // HACK .size c'est un peu tricher pour l'exo
   }
 
-  // FIXME pas sûr de la méthode	
+  // FIXME pas sûr de la méthode
   countPrefixes(prefix: string): number {
     if (!prefix) return this.count();
     for (const [key, child] of this.children)
-      if (prefix.startsWith(key)) return child.countPrefixes(prefix.slice(key.length));
+      if (prefix.startsWith(key))
+        return child.countPrefixes(prefix.slice(key.length));
     return 0;
   }
 
-  // FIXME pas sûr de la méthode	
+  // FIXME pas sûr de la méthode
   merge(node: PatriciaTrieNode): PatriciaTrieNode {
     if (node.is_end_of_word) this.is_end_of_word = true;
     for (const [key, child] of node.children) {
@@ -182,7 +189,7 @@ export default class PatriciaTrieNode {
     }
     return this;
   }
-  
+
   static fromJson(json: PatriciaTrieNodeI): PatriciaTrieNode {
     const node = new PatriciaTrieNode(json.label, json.is_end_of_word);
     node.children = new Map(

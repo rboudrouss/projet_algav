@@ -1,1 +1,3 @@
-deno 2.1.1
+deno 2.0.5
+
+should work for any deno version > 2

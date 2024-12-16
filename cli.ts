@@ -208,6 +208,7 @@ function replacer(_: string, value: any) {
 // de notre coté notre code ne gère pas cela, donc on doit séparer les lettres du label en plusieurs noeuds
 // C'est un choix, cela rendrais l'analyse algorithmique plus complexe
 function reviverPatricia(_: string, value: NodePatricia) {
+  return value;
   if (value.is_end_of_word && value.label.length > 1) {
     const labels = value.label.split("").map((c) => {
       return {

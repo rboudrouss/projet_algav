@@ -1,5 +1,5 @@
-import { PatriciaTrie } from "./Patricia";
-import { HybridTrie } from "./Hybrid";
+import { PatriciaTrie } from "./Patricia/index.ts";
+import { HybridTrie } from "./Hybrid/index.ts";
 
 let mots =
   `A quel genial professeur de dactylographie sommes nous redevables de la superbe phrase ci dessous, un modele du genre, que toute dactylo connait par coeur puisque elle fait appel a chacune des touches du clavier de la machine a ecrire ?`

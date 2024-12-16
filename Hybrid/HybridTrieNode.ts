@@ -27,7 +27,7 @@ export default class HybridTrieNode {
   }
 
   insert(word: string): HybridTrieNode {
-    if (word.length === 1) {
+    if (word.length === 1 && word[0] === this.char) {
       this.is_end_of_word = true;
       return this;
     }
@@ -127,7 +127,7 @@ export default class HybridTrieNode {
   listWords(prefix = ""): string[] {
     const words: string[] = [];
 
-    if (this.is_end_of_word) words.push(prefix);
+    if (this.is_end_of_word) words.push(prefix + this.char);
 
     if (this.left) words.push(...this.left.listWords(prefix));
     if (this.middle) words.push(...this.middle.listWords(prefix + this.char));

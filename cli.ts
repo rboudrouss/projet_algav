@@ -14,14 +14,14 @@ const actions: {
   inserer: {
     "0": (fichier: string) => {
       const trie = new PatriciaTrie();
-      const content = readAndProcessFile(fichier)
+      const content = readAndProcessFile(fichier);
       content.forEach((mot) => trie.insert(mot));
       const out = JSON.stringify(trie.root, replacer, 2);
       Deno.writeTextFileSync("pat.json", out);
     },
     "1": (fichier: string) => {
       const trie = new HybridTrie();
-      const content = readAndProcessFile(fichier)
+      const content = readAndProcessFile(fichier);
       content.forEach((mot) => trie.insert(mot));
       const out = JSON.stringify(trie.root, null, 2);
       Deno.writeTextFileSync("trie.json", out);
@@ -29,15 +29,19 @@ const actions: {
   },
   suppression: {
     "0": (fichier: string) => {
-      const trie = PatriciaTrie.fromJson(readJsonFile("pat.json") as PatriciaTrieNodeI);
-      const content = readAndProcessFile(fichier)
+      const trie = PatriciaTrie.fromJson(
+        readJsonFile("pat.json", true) as PatriciaTrieNodeI
+      );
+      const content = readAndProcessFile(fichier);
       content.forEach((mot) => trie.delete(mot));
       const out = JSON.stringify(trie.root, replacer, 2);
       Deno.writeTextFileSync("pat.json", out);
     },
     "1": (fichier: string) => {
-      const trie = HybridTrie.fromJSON(readJsonFile("trie.json") as HybridTrieNodeI);
-      const content = readAndProcessFile(fichier)
+      const trie = HybridTrie.fromJSON(
+        readJsonFile("trie.json") as HybridTrieNodeI
+      );
+      const content = readAndProcessFile(fichier);
       content.forEach((mot) => trie.delete(mot));
       const out = JSON.stringify(trie.root, replacer, 2);
       Deno.writeTextFileSync("trie.json", out);
@@ -45,15 +49,23 @@ const actions: {
   },
   fusion: {
     "0": (fichier1: string, fichier2: string) => {
-      const trie1 = PatriciaTrie.fromJson(readJsonFile(fichier1) as PatriciaTrieNodeI);
-      const trie2 = PatriciaTrie.fromJson(readJsonFile(fichier2) as PatriciaTrieNodeI);
+      const trie1 = PatriciaTrie.fromJson(
+        readJsonFile(fichier1, true) as PatriciaTrieNodeI
+      );
+      const trie2 = PatriciaTrie.fromJson(
+        readJsonFile(fichier2, true) as PatriciaTrieNodeI
+      );
       trie1.merge(trie2);
       const out = JSON.stringify(trie1.root, replacer, 2);
       Deno.writeTextFileSync("pat.json", out);
     },
     "1": (fichier1: string, fichier2: string) => {
-      const trie1 = HybridTrie.fromJSON(readJsonFile(fichier1) as HybridTrieNodeI);
-      const trie2 = HybridTrie.fromJSON(readJsonFile(fichier2) as HybridTrieNodeI);
+      const trie1 = HybridTrie.fromJSON(
+        readJsonFile(fichier1) as HybridTrieNodeI
+      );
+      const trie2 = HybridTrie.fromJSON(
+        readJsonFile(fichier2) as HybridTrieNodeI
+      );
       trie1.merge(trie2);
       const out = JSON.stringify(trie1.root, replacer, 2);
       Deno.writeTextFileSync("trie.json", out);
@@ -61,36 +73,48 @@ const actions: {
   },
   listeMots: {
     "0": (fichier: string) => {
-      const trie = PatriciaTrie.fromJson(readJsonFile(fichier) as PatriciaTrieNodeI);
+      const trie = PatriciaTrie.fromJson(
+        readJsonFile(fichier, true) as PatriciaTrieNodeI
+      );
       const out = trie.listWords().join("\n");
       Deno.writeTextFileSync("mot.txt", out);
     },
     "1": (fichier: string) => {
-      const trie = HybridTrie.fromJSON(readJsonFile(fichier) as HybridTrieNodeI);
+      const trie = HybridTrie.fromJSON(
+        readJsonFile(fichier) as HybridTrieNodeI
+      );
       const out = trie.listWords().join("\n");
       Deno.writeTextFileSync("mot.txt", out);
     },
   },
   profondeurMoyenne: {
     "0": (fichier: string) => {
-      const trie = PatriciaTrie.fromJson(readJsonFile(fichier) as PatriciaTrieNodeI);
+      const trie = PatriciaTrie.fromJson(
+        readJsonFile(fichier, true) as PatriciaTrieNodeI
+      );
       const out = trie.averageDepth().toString();
       Deno.writeTextFileSync("profondeur.txt", out);
     },
     "1": (fichier: string) => {
-      const trie = HybridTrie.fromJSON(readJsonFile(fichier) as HybridTrieNodeI);
+      const trie = HybridTrie.fromJSON(
+        readJsonFile(fichier) as HybridTrieNodeI
+      );
       const out = trie.averageDepth().toString();
       Deno.writeTextFileSync("profondeur.txt", out);
     },
   },
   prefixe: {
     "0": (fichier: string, prefixe: string) => {
-      const trie = PatriciaTrie.fromJson(readJsonFile(fichier) as PatriciaTrieNodeI);
+      const trie = PatriciaTrie.fromJson(
+        readJsonFile(fichier, true) as PatriciaTrieNodeI
+      );
       const out = trie.countPrefixes(prefixe).toString();
       Deno.writeTextFileSync("prefixe.txt", out);
     },
     "1": (fichier: string, prefixe: string) => {
-      const trie = HybridTrie.fromJSON(readJsonFile(fichier) as HybridTrieNodeI);
+      const trie = HybridTrie.fromJSON(
+        readJsonFile(fichier) as HybridTrieNodeI
+      );
       const out = trie.countPrefixes(prefixe).toString();
       Deno.writeTextFileSync("prefixe.txt", out);
     },
@@ -156,10 +180,15 @@ function readAndProcessFile(file: string) {
 // HACK parce que les jsons données dans le pdf sont invalides
 // yes (et je suppose non) ne sont pas des valeurs valides en JSON !!
 // mais sont supportés ici
-function readJsonFile(file: string): unknown {
+// 0 : Patricia-Trie
+// 1 : Hybrid-Trie
+function readJsonFile(file: string, isPatricia: boolean = false): unknown {
   let out;
   try {
-    out = JSON.parse(readFile(file).replace(/:\s*[\r\n]*\s*yes/g, ": true").replace(/:\s*[\r\n]*\s*no/g, ": false"));
+    const text = readFile(file)
+      .replace(/:\s*[\r\n]*\s*yes/g, ": true")
+      .replace(/:\s*[\r\n]*\s*no/g, ": false");
+    out = JSON.parse(text, isPatricia ? reviverPatricia : undefined);
   } catch (err) {
     console.error("Erreur lors de la lecture du json" + file);
     console.error(err);
@@ -172,4 +201,33 @@ function readJsonFile(file: string): unknown {
 function replacer(_: string, value: any) {
   if (value instanceof Map) return Object.fromEntries(value);
   return value;
+}
+
+// on a remarqué dans les exemples des JSON données qu'il y avait une optimisation
+// si un mot est préfixe du label du noeud "is_end_of_word" est à true alors il est considéré comme un mot
+// de notre coté notre code ne gère pas cela, donc on doit séparer les lettres du label en plusieurs noeuds
+// C'est un choix, cela rendrais l'analyse algorithmique plus complexe
+function reviverPatricia(_: string, value: NodePatricia) {
+  if (value.is_end_of_word && value.label.length > 1) {
+    const labels = value.label.split("").map((c) => {
+      return {
+        label: c,
+        is_end_of_word: true,
+        children: {} as Record<string, NodePatricia>,
+      };
+    });
+    for (let i = 0; i < labels.length; i++) {
+      if (i < labels.length - 1) {
+        labels[i].children[labels[i + 1].label] = labels[i + 1];
+      }
+    }
+    value = labels[0];
+  }
+  return value;
+}
+
+interface NodePatricia {
+  label: string;
+  is_end_of_word: boolean;
+  children: Record<string, NodePatricia>;
 }

@@ -92,7 +92,7 @@ export default class HybridTrieNode {
 
     if (!this.middle && !this.left && !this.right && !this.is_end_of_word) {
       console.log(
-        prefix + this.char + " (fin de branche (is_end_of_word=False))",
+        prefix + this.char + " (fin de branche (is_end_of_word=False))"
       );
     }
 
@@ -105,7 +105,7 @@ export default class HybridTrieNode {
     console.log(
       `${prefix}${isTail ? "└── " : "├── "}${this.char}${
         this.is_end_of_word ? " (fin de mot)" : ""
-      }`,
+      }`
     );
 
     // Préparer le préfixe pour les enfants
@@ -122,7 +122,7 @@ export default class HybridTrieNode {
     nonNullChildren.forEach((child, index) => {
       child.child?.displayOld(
         childPrefix,
-        index === nonNullChildren.length - 1,
+        index === nonNullChildren.length - 1
       );
     });
   }
@@ -164,7 +164,7 @@ export default class HybridTrieNode {
       height,
       1 + (this.left?.height() ?? 0),
       1 + (this.middle?.height() ?? 0),
-      1 + (this.right?.height() ?? 0),
+      1 + (this.right?.height() ?? 0)
     );
     return height;
   }
@@ -177,7 +177,6 @@ export default class HybridTrieNode {
     return sum / 3 + 1;
   }
 
-  // FIXME pas sûr de la méthode
   countPrefixes(prefix: string): number {
     if (!prefix) return this.count();
     const char = prefix[0];
@@ -186,7 +185,6 @@ export default class HybridTrieNode {
     return this.middle?.countPrefixes(prefix.slice(1)) ?? 0;
   }
 
-  // FIXME pas sûr de la méthode
   merge(node: HybridTrieNode): HybridTrieNode {
     if (node.is_end_of_word) this.is_end_of_word = true;
     if (node.left) {
@@ -204,11 +202,32 @@ export default class HybridTrieNode {
     return this;
   }
 
-  // FIXME pas sûr de la méthode
   balance(): HybridTrieNode {
-    const words = this.listWords();
-    const newRoot = new HybridTrieNode(words[0][0]);
-    words.forEach((word) => newRoot.insert(word));
+    const words = this.listWords().sort();
+
+    // If empty or single word, no need to balance
+    if (words.length <= 1) return this;
+
+    // Find median word to use as root
+    const medianIndex = Math.floor(words.length / 2);
+    const medianWord = words[medianIndex];
+
+    // Create new balanced tree
+    const newRoot = new HybridTrieNode(medianWord[0]);
+
+    // Insert words in an order that maintains balance
+    const insertInOrder = (start: number, end: number) => {
+      if (start > end) return;
+
+      const mid = Math.floor((start + end) / 2);
+      newRoot.insert(words[mid]);
+
+      insertInOrder(start, mid - 1);
+      insertInOrder(mid + 1, end);
+    };
+
+    insertInOrder(0, words.length - 1);
+
     return newRoot;
   }
 

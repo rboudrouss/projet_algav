@@ -1,7 +1,9 @@
 import HybridTrieNode, { HybridTrieNodeI } from "./HybridTrieNode.ts";
 
 export default class HybridTrie {
-  root: HybridTrieNode | null;
+  root: HybridTrieNode | null; // racine
+  max_depth: number; // profondeur max
+  depth_sum: number; // profondeur moyenne
 
   constructor() {
     this.root = null;
@@ -12,7 +14,16 @@ export default class HybridTrie {
     if (!this.root) {
       this.root = new HybridTrieNode(word[0]);
     }
-    this.root.insert(word);
+    let new_node = this.root.insert(word);
+    let new_node_height = new_node.depth;
+    if (new_node_height > this.max_depth) {
+      this.max_depth = new_node_height;
+    }
+    let average_depth = (this.depth_sum + new_node_height) / this.root.count();
+    if (average_depth / this.max_depth > 3) {
+      this.root.balance();
+    }
+
     return this;
   }
 
@@ -74,7 +85,7 @@ export default class HybridTrie {
     }
     return this;
   }
-  
+
   static fromJSON(json: HybridTrieNodeI): HybridTrie {
     const trie = new HybridTrie();
     try {
@@ -86,5 +97,4 @@ export default class HybridTrie {
     }
     return trie;
   }
-
 }

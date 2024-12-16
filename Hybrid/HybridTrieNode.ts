@@ -4,13 +4,15 @@ export default class HybridTrieNode {
   left: HybridTrieNode | null; // Fils gauche
   middle: HybridTrieNode | null; // Fils milieu
   right: HybridTrieNode | null; // Fils droit
+  depth: number; // profondeur du noeud
 
-  constructor(char: string, is_end_of_word = false) {
+  constructor(char: string, is_end_of_word = false, depth = 0) {
     this.char = char;
     this.is_end_of_word = is_end_of_word;
     this.left = null;
     this.middle = null;
     this.right = null;
+    this.depth = depth;
   }
 
   search(word: string): boolean {
@@ -35,13 +37,22 @@ export default class HybridTrieNode {
     const char = word[0];
 
     if (char < this.char) {
-      this.left ??= new HybridTrieNode(char);
+      if (!this.left) {
+        this.left = new HybridTrieNode(char);
+        this.left.depth = this.depth + 1;
+      }
       this.left = this.left.insert(word);
     } else if (char > this.char) {
-      this.right ??= new HybridTrieNode(char);
+      if (!this.right) {
+        this.right = new HybridTrieNode(char);
+        this.right.depth = this.depth + 1;
+      }
       this.right = this.right.insert(word);
     } else {
-      this.middle ??= new HybridTrieNode(word[1]);
+      if (!this.middle) {
+        this.middle = new HybridTrieNode(word[1]);
+        this.middle.depth = this.depth + 1;
+      }
       if (word.length > 1) this.middle = this.middle.insert(word.slice(1));
       else this.middle.is_end_of_word = true;
     }
@@ -81,7 +92,7 @@ export default class HybridTrieNode {
 
     if (!this.middle && !this.left && !this.right && !this.is_end_of_word) {
       console.log(
-        prefix + this.char + " (fin de branche (is_end_of_word=False))"
+        prefix + this.char + " (fin de branche (is_end_of_word=False))",
       );
     }
 
@@ -94,7 +105,7 @@ export default class HybridTrieNode {
     console.log(
       `${prefix}${isTail ? "└── " : "├── "}${this.char}${
         this.is_end_of_word ? " (fin de mot)" : ""
-      }`
+      }`,
     );
 
     // Préparer le préfixe pour les enfants
@@ -111,7 +122,7 @@ export default class HybridTrieNode {
     nonNullChildren.forEach((child, index) => {
       child.child?.displayOld(
         childPrefix,
-        index === nonNullChildren.length - 1
+        index === nonNullChildren.length - 1,
       );
     });
   }
@@ -153,7 +164,7 @@ export default class HybridTrieNode {
       height,
       1 + (this.left?.height() ?? 0),
       1 + (this.middle?.height() ?? 0),
-      1 + (this.right?.height() ?? 0)
+      1 + (this.right?.height() ?? 0),
     );
     return height;
   }

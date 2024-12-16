@@ -7,6 +7,8 @@ export default class HybridTrie {
 
   constructor() {
     this.root = null;
+    this.max_depth = 0;
+    this.depth_sum = 0;
   }
 
   // Insertion
@@ -19,6 +21,7 @@ export default class HybridTrie {
     if (new_node_height > this.max_depth) {
       this.max_depth = new_node_height;
     }
+    this.depth_sum += new_node_height;
     let average_depth = (this.depth_sum + new_node_height) / this.root.count();
     if (average_depth / this.max_depth > 3) {
       this.root.balance();

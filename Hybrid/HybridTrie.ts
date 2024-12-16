@@ -24,7 +24,7 @@ export default class HybridTrie {
     this.depth_sum += new_node_height;
     let average_depth = (this.depth_sum + new_node_height) / this.root.count();
     if (average_depth / this.max_depth > 3) {
-      this.root.balance();
+      this.root = this.root.balance();
     }
 
     return this;

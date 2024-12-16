@@ -1,4 +1,4 @@
-import PatriciaTrieNode, { PatriciaTrieNodeI } from "./PatriciaTrieNode";
+import PatriciaTrieNode, { PatriciaTrieNodeI } from "./PatriciaTrieNode.ts";
 
 // TODO hmmm cette classe est-elle vraiment nécessaire ?
 export default class PatriciaTrie {

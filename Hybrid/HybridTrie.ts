@@ -1,4 +1,4 @@
-import HybridTrieNode, { HybridTrieNodeI } from "./HybridTrieNode";
+import HybridTrieNode, { HybridTrieNodeI } from "./HybridTrieNode.ts";
 
 export default class HybridTrie {
   root: HybridTrieNode | null;

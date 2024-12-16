@@ -1,4 +1,4 @@
-import PatriciaTrie from "./PatriciaTrie";
-import PatriciaTrieNode from "./PatriciaTrieNode";
+import PatriciaTrie from "./PatriciaTrie.ts";
+import PatriciaTrieNode from "./PatriciaTrieNode.ts";
 
 export { PatriciaTrie, PatriciaTrieNode };

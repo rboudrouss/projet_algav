@@ -28,12 +28,12 @@ export default class HybridTrieNode {
     return this.middle?.search(word.slice(1)) ?? false;
   }
 
-  insert(word: string): HybridTrieNode {
+  insert(word: string): [HybridTrieNode, number] {
     if (word.length === 1 && word[0] === this.char) {
       this.is_end_of_word = true;
-      return this;
+      return [this, this.depth];
     }
-
+    let result: [HybridTrieNode, number] = [this, this.depth];
     const char = word[0];
 
     if (char < this.char) {
@@ -41,46 +41,58 @@ export default class HybridTrieNode {
         this.left = new HybridTrieNode(char);
         this.left.depth = this.depth + 1;
       }
-      this.left = this.left.insert(word);
+      result = this.left.insert(word);
+      this.left = result[0];
     } else if (char > this.char) {
       if (!this.right) {
         this.right = new HybridTrieNode(char);
         this.right.depth = this.depth + 1;
       }
-      this.right = this.right.insert(word);
+      result = this.right.insert(word);
+      this.right = result[0];
     } else {
       if (!this.middle) {
         this.middle = new HybridTrieNode(word[1]);
         this.middle.depth = this.depth + 1;
       }
-      if (word.length > 1) this.middle = this.middle.insert(word.slice(1));
-      else this.middle.is_end_of_word = true;
+      if (word.length > 1) {
+        result = this.middle.insert(word.slice(1));
+        this.middle = result[0];
+      } else this.middle.is_end_of_word = true;
     }
+    result[0] = this;
 
-    return this;
+    return result;
   }
 
-  delete(word: string): HybridTrieNode | null {
+  delete(word: string): [HybridTrieNode | null, number | null] {
     if (word.length === 1) {
       this.is_end_of_word = false;
-      if (!this.left && !this.middle && !this.right) return null;
-      return this;
+      if (!this.left && !this.middle && !this.right) return [null, this.depth];
+      return [this, this.depth];
     }
 
     const char = word[0];
+    let result: [HybridTrieNode | null, number | null] = [this, this.depth];
 
     if (char < this.char) {
-      this.left = this.left?.delete(word) ?? null;
+      result = this.left?.delete(word) ?? [null, null];
+      this.left = result[0];
     } else if (char > this.char) {
-      this.right = this.right?.delete(word) ?? null;
+      result = this.right?.delete(word) ?? [null, null];
+      this.right = result[0];
     } else {
-      this.middle = this.middle?.delete(word.slice(1)) ?? null;
+      result = this.middle?.delete(word.slice(1)) ?? [null, null];
+      this.middle = result[0];
     }
 
     // HACK pour supprimer les noeuds vides, y a probablement une meilleure façon de faire directement dans les conditions ci-dessus
-    if (!this.left && !this.middle && !this.right && !this.is_end_of_word)
-      return null;
-    return this;
+    if (!this.left && !this.middle && !this.right && !this.is_end_of_word) {
+      console.log("nv:", this.depth);
+      return [null, result[1]];
+    }
+    console.log("autre:", this.depth);
+    return [null, result[1]];
   }
 
   display(prefix = ""): void {
@@ -92,7 +104,7 @@ export default class HybridTrieNode {
 
     if (!this.middle && !this.left && !this.right && !this.is_end_of_word) {
       console.log(
-        prefix + this.char + " (fin de branche (is_end_of_word=False))"
+        prefix + this.char + " (fin de branche (is_end_of_word=False))",
       );
     }
 
@@ -105,7 +117,7 @@ export default class HybridTrieNode {
     console.log(
       `${prefix}${isTail ? "└── " : "├── "}${this.char}${
         this.is_end_of_word ? " (fin de mot)" : ""
-      }`
+      }`,
     );
 
     // Préparer le préfixe pour les enfants
@@ -122,7 +134,7 @@ export default class HybridTrieNode {
     nonNullChildren.forEach((child, index) => {
       child.child?.displayOld(
         childPrefix,
-        index === nonNullChildren.length - 1
+        index === nonNullChildren.length - 1,
       );
     });
   }
@@ -164,7 +176,7 @@ export default class HybridTrieNode {
       height,
       1 + (this.left?.height() ?? 0),
       1 + (this.middle?.height() ?? 0),
-      1 + (this.right?.height() ?? 0)
+      1 + (this.right?.height() ?? 0),
     );
     return height;
   }

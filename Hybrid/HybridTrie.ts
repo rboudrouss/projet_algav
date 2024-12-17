@@ -16,14 +16,17 @@ export default class HybridTrie {
     if (!this.root) {
       this.root = new HybridTrieNode(word[0]);
     }
-    let new_node = this.root.insert(word);
-    let new_node_height = new_node.depth;
+    const new_node = this.root.insert(word);
+    const new_node_height = new_node[1];
+    //console.log(new_node_height);
     if (new_node_height > this.max_depth) {
       this.max_depth = new_node_height;
     }
     this.depth_sum += new_node_height;
-    let average_depth = (this.depth_sum + new_node_height) / this.root.count();
-    if (average_depth / this.max_depth > 3) {
+    const average_depth =
+      (this.depth_sum + new_node_height) / this.root.count();
+    if (average_depth / this.max_depth > 2) {
+      //console.log("balancing !");
       this.root = this.root.balance();
     }
 
@@ -41,9 +44,13 @@ export default class HybridTrie {
   }
 
   // Suppression
+
+  // Suppression
   delete(word: string): HybridTrie {
     if (!this.root) return this;
-    this.root = this.root.delete(word);
+    const del_node = this.root.delete(word);
+    this.depth_sum -= del_node[1] ? del_node[1] : 0;
+    this.root = del_node[0];
     return this;
   }
 

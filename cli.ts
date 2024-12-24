@@ -1,3 +1,4 @@
+import { replacer } from "./helpers/index.ts";
 import { HybridTrieNodeI } from "./Hybrid/HybridTrieNode.ts";
 import { HybridTrie } from "./Hybrid/index.ts";
 import PatriciaTrie from "./Patricia/PatriciaTrie.ts";
@@ -30,7 +31,7 @@ const actions: {
   suppression: {
     "0": (fichier: string) => {
       const trie = PatriciaTrie.fromJson(
-        readJsonFile("pat.json", true) as PatriciaTrieNodeI
+        readJsonFile("pat.json") as PatriciaTrieNodeI
       );
       const content = readAndProcessFile(fichier);
       content.forEach((mot) => trie.delete(mot));
@@ -50,10 +51,10 @@ const actions: {
   fusion: {
     "0": (fichier1: string, fichier2: string) => {
       const trie1 = PatriciaTrie.fromJson(
-        readJsonFile(fichier1, true) as PatriciaTrieNodeI
+        readJsonFile(fichier1) as PatriciaTrieNodeI
       );
       const trie2 = PatriciaTrie.fromJson(
-        readJsonFile(fichier2, true) as PatriciaTrieNodeI
+        readJsonFile(fichier2) as PatriciaTrieNodeI
       );
       trie1.merge(trie2);
       const out = JSON.stringify(trie1.root, replacer, 2);
@@ -74,7 +75,7 @@ const actions: {
   listeMots: {
     "0": (fichier: string) => {
       const trie = PatriciaTrie.fromJson(
-        readJsonFile(fichier, true) as PatriciaTrieNodeI
+        readJsonFile(fichier) as PatriciaTrieNodeI
       );
       const out = trie.listWords().join("\n");
       Deno.writeTextFileSync("mot.txt", out);
@@ -90,7 +91,7 @@ const actions: {
   profondeurMoyenne: {
     "0": (fichier: string) => {
       const trie = PatriciaTrie.fromJson(
-        readJsonFile(fichier, true) as PatriciaTrieNodeI
+        readJsonFile(fichier) as PatriciaTrieNodeI
       );
       const out = trie.averageDepth().toString();
       Deno.writeTextFileSync("profondeur.txt", out);
@@ -106,7 +107,7 @@ const actions: {
   prefixe: {
     "0": (fichier: string, prefixe: string) => {
       const trie = PatriciaTrie.fromJson(
-        readJsonFile(fichier, true) as PatriciaTrieNodeI
+        readJsonFile(fichier) as PatriciaTrieNodeI
       );
       const out = trie.countPrefixes(prefixe).toString();
       Deno.writeTextFileSync("prefixe.txt", out);
@@ -182,13 +183,13 @@ function readAndProcessFile(file: string) {
 // mais sont supportés ici
 // 0 : Patricia-Trie
 // 1 : Hybrid-Trie
-function readJsonFile(file: string, isPatricia: boolean = false): unknown {
+function readJsonFile(file: string): unknown {
   let out;
   try {
     const text = readFile(file)
       .replace(/:\s*[\r\n]*\s*yes/g, ": true")
       .replace(/:\s*[\r\n]*\s*no/g, ": false");
-    out = JSON.parse(text, isPatricia ? reviverPatricia : undefined);
+    out = JSON.parse(text);
   } catch (err) {
     console.error("Erreur lors de la lecture du json" + file);
     console.error(err);
@@ -197,38 +198,3 @@ function readJsonFile(file: string, isPatricia: boolean = false): unknown {
   return out;
 }
 
-// deno-lint-ignore no-explicit-any
-function replacer(_: string, value: any) {
-  if (value instanceof Map) return Object.fromEntries(value);
-  return value;
-}
-
-// on a remarqué dans les exemples des JSON données qu'il y avait une optimisation
-// si un mot est préfixe du label du noeud "is_end_of_word" est à true alors il est considéré comme un mot
-// de notre coté notre code ne gère pas cela, donc on doit séparer les lettres du label en plusieurs noeuds
-// C'est un choix, cela rendrais l'analyse algorithmique plus complexe
-function reviverPatricia(_: string, value: NodePatricia) {
-  return value;
-  if (value.is_end_of_word && value.label.length > 1) {
-    const labels = value.label.split("").map((c) => {
-      return {
-        label: c,
-        is_end_of_word: true,
-        children: {} as Record<string, NodePatricia>,
-      };
-    });
-    for (let i = 0; i < labels.length; i++) {
-      if (i < labels.length - 1) {
-        labels[i].children[labels[i + 1].label] = labels[i + 1];
-      }
-    }
-    value = labels[0];
-  }
-  return value;
-}
-
-interface NodePatricia {
-  label: string;
-  is_end_of_word: boolean;
-  children: Record<string, NodePatricia>;
-}

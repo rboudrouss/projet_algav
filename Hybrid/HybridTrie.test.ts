@@ -1,4 +1,4 @@
-import { assert, assertEquals } from "jsr:@std/assert";
+import { assertEquals } from "jsr:@std/assert";
 import HybridTrie from "./HybridTrie.ts";
 
 Deno.test("HybridTrie should insert correctly", () => {
@@ -210,3 +210,17 @@ Deno.test("HybridTrie balance don't disturb the trie", () => {
 
   assertEquals(trie.listWords().sort(), words.sort());
 });
+
+Deno.test(
+  "HybridTrie should keep the same structure if imported from JSON",
+  () => {
+    const trie = new HybridTrie();
+    const words = ["car", "carts", "cat", "dog", "doggy", "doggo"];
+    words.forEach((word) => trie.insert(word));
+
+    const json = JSON.stringify(trie.root);
+    const newTrie = HybridTrie.fromJSON(JSON.parse(json));
+
+    assertEquals(newTrie.listWords().sort(), words.sort());
+  }
+);

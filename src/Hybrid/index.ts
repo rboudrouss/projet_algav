@@ -1,4 +1,4 @@
+import HybridTrieNode, { type HybridTrieNodeJSON } from "./HybridTrieNode.ts";
 import HybridTrie from "./HybridTrie.ts";
-import HybridTrieNode from "./HybridTrieNode.ts";
 
-export { HybridTrie, HybridTrieNode };
+export { HybridTrie, HybridTrieNode, type HybridTrieNodeJSON };

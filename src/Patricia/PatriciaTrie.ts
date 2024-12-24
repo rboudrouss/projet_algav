@@ -1,4 +1,4 @@
-import PatriciaTrieNode, { PatriciaTrieNodeI } from "./PatriciaTrieNode.ts";
+import PatriciaTrieNode, { PatriciaTrieNodeJSON } from "./PatriciaTrieNode.ts";
 
 // TODO hmmm cette classe est-elle vraiment nécessaire ?
 export default class PatriciaTrie {
@@ -66,7 +66,7 @@ export default class PatriciaTrie {
     return this;
   }
   
-  static fromJson(json: PatriciaTrieNodeI): PatriciaTrie {
+  static fromJson(json: PatriciaTrieNodeJSON): PatriciaTrie {
     const trie = new PatriciaTrie();
     trie.root = PatriciaTrieNode.fromJson(json);
     return trie;

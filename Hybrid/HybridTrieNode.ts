@@ -221,7 +221,7 @@ export default class HybridTrieNode {
     return newRoot;
   }
 
-  static fromJSON(json: HybridTrieNodeJSON): HybridTrieNode {
+  static fromJSON(json: HybridTrieNodeI): HybridTrieNode {
     const node = new HybridTrieNode(json.char, json.is_end_of_word);
     node.left = json.left ? HybridTrieNode.fromJSON(json.left) : null;
     node.middle = json.middle ? HybridTrieNode.fromJSON(json.middle) : null;
@@ -230,10 +230,10 @@ export default class HybridTrieNode {
   }
 }
 
-export interface HybridTrieNodeJSON {
+export interface HybridTrieNodeI {
   char: string;
   is_end_of_word: boolean;
-  left: HybridTrieNodeJSON | null;
-  middle: HybridTrieNodeJSON | null;
-  right: HybridTrieNodeJSON | null;
+  left: HybridTrieNodeI | null;
+  middle: HybridTrieNodeI | null;
+  right: HybridTrieNodeI | null;
 }

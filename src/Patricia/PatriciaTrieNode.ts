@@ -193,7 +193,7 @@ export default class PatriciaTrieNode {
     return this;
   }
 
-  static fromJson(json: PatriciaTrieNodeI): PatriciaTrieNode {
+  static fromJson(json: PatriciaTrieNodeJSON): PatriciaTrieNode {
     const node = new PatriciaTrieNode(json.label, json.is_end_of_word);
     node.children = new Map(
       Object.entries(json.children).map(([key, value]) => [
@@ -205,8 +205,8 @@ export default class PatriciaTrieNode {
   }
 }
 
-export interface PatriciaTrieNodeI {
+export interface PatriciaTrieNodeJSON {
   label: string;
   is_end_of_word: boolean;
-  children: Record<string, PatriciaTrieNodeI>;
+  children: Record<string, PatriciaTrieNodeJSON>;
 }

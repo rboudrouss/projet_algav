@@ -1,4 +1,4 @@
+import PatriciaTrieNode, { PatriciaTrieNodeJSON } from "./PatriciaTrieNode.ts";
 import PatriciaTrie from "./PatriciaTrie.ts";
-import PatriciaTrieNode from "./PatriciaTrieNode.ts";
 
-export { PatriciaTrie, PatriciaTrieNode };
+export { PatriciaTrie, PatriciaTrieNode, type PatriciaTrieNodeJSON };

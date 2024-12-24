@@ -4,15 +4,13 @@ export default class HybridTrieNode {
   left: HybridTrieNode | null; // Fils gauche
   middle: HybridTrieNode | null; // Fils milieu
   right: HybridTrieNode | null; // Fils droit
-  depth: number; // profondeur du noeud
 
-  constructor(char: string, is_end_of_word = false, depth = 0) {
+  constructor(char: string, is_end_of_word = false) {
     this.char = char;
     this.is_end_of_word = is_end_of_word;
     this.left = null;
     this.middle = null;
     this.right = null;
-    this.depth = depth;
   }
 
   search(word: string): boolean {
@@ -38,22 +36,13 @@ export default class HybridTrieNode {
     const char = word[0];
 
     if (char < this.char) {
-      if (!this.left) {
-        this.left = new HybridTrieNode(char);
-        this.left.depth = this.depth + 1;
-      }
+      this.left ??= new HybridTrieNode(char);
       this.left = this.left.insert(word);
     } else if (char > this.char) {
-      if (!this.right) {
-        this.right = new HybridTrieNode(char);
-        this.right.depth = this.depth + 1;
-      }
+      this.right ??= new HybridTrieNode(char);
       this.right = this.right.insert(word);
     } else {
-      if (!this.middle) {
-        this.middle = new HybridTrieNode(word[1]);
-        this.middle.depth = this.depth + 1;
-      }
+      this.middle ??= new HybridTrieNode(word[1]);
       if (word.length > 1) this.middle = this.middle.insert(word.slice(1));
       else this.middle.is_end_of_word = true;
     }

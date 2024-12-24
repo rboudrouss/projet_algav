@@ -16,7 +16,8 @@ export default class HybridTrieNode {
   }
 
   search(word: string): boolean {
-    if (word.length === 1) return this.is_end_of_word;
+    if (word.length === 1 && this.char === word) return this.is_end_of_word;
+    if (word.length === 1 && !this.right && !this.left) return false;
     const char = word[0];
 
     if (char < this.char) {
@@ -61,7 +62,7 @@ export default class HybridTrieNode {
   }
 
   delete(word: string): HybridTrieNode | null {
-    if (word.length === 1) {
+    if (word.length === 1 && word === this.char) {
       this.is_end_of_word = false;
       if (!this.left && !this.middle && !this.right) return null;
       return this;
@@ -73,7 +74,7 @@ export default class HybridTrieNode {
       this.left = this.left?.delete(word) ?? null;
     } else if (char > this.char) {
       this.right = this.right?.delete(word) ?? null;
-    } else {
+    } else if (word.length > 1) {
       this.middle = this.middle?.delete(word.slice(1)) ?? null;
     }
 
@@ -178,44 +179,33 @@ export default class HybridTrieNode {
   }
 
   countPrefixes(prefix: string): number {
-    if (!prefix) return this.count();
     const char = prefix[0];
     if (char < this.char) return this.left?.countPrefixes(prefix) ?? 0;
     if (char > this.char) return this.right?.countPrefixes(prefix) ?? 0;
-    return this.middle?.countPrefixes(prefix.slice(1)) ?? 0;
+    if (prefix.length > 1)
+      return this.middle?.countPrefixes(prefix.slice(1)) ?? 0;
+
+    return (this.middle?.count() ?? 0) + (this.is_end_of_word ? 1 : 0);
   }
 
+  // Naïve implementation, is not asked in the exercise
   merge(node: HybridTrieNode): HybridTrieNode {
-    if (node.is_end_of_word) this.is_end_of_word = true;
-    if (node.left) {
-      if (this.left) this.left.merge(node.left);
-      else this.left = node.left;
-    }
-    if (node.middle) {
-      if (this.middle) this.middle.merge(node.middle);
-      else this.middle = node.middle;
-    }
-    if (node.right) {
-      if (this.right) this.right.merge(node.right);
-      else this.right = node.right;
-    }
+    const words = node.listWords();
+    words.forEach((word) => this.insert(word));
     return this;
   }
 
+  // on reconstuit l'arbre en prenant le mot médian comme racine
+  // puis on insère succéssivement les mots à gauche et à droite de ce mot médian
   balance(): HybridTrieNode {
     const words = this.listWords().sort();
 
-    // If empty or single word, no need to balance
     if (words.length <= 1) return this;
 
-    // Find median word to use as root
-    const medianIndex = Math.floor(words.length / 2);
-    const medianWord = words[medianIndex];
+    const medianWord = words.at(Math.floor(words.length / 2))!;
 
-    // Create new balanced tree
     const newRoot = new HybridTrieNode(medianWord[0]);
 
-    // Insert words in an order that maintains balance
     const insertInOrder = (start: number, end: number) => {
       if (start > end) return;
 

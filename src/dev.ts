@@ -1,3 +1,8 @@
+// Just a playground file
+// Everything you write here will be executed by the commande
+// deno run dev
+// You can use this file to test things
+
 import { PatriciaTrie } from "./Patricia/index.ts";
 import { HybridTrie } from "./Hybrid/index.ts";
 

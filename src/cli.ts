@@ -1,3 +1,5 @@
+// CLI pour manipuler les arbres Patricia et Hybrid
+
 import { replacer } from "./helpers/index.ts";
 import { HybridTrieNodeI } from "./Hybrid/HybridTrieNode.ts";
 import { HybridTrie } from "./Hybrid/index.ts";

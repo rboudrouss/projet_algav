@@ -48,3 +48,20 @@ export function readJsonFile(file: string): unknown {
   }
   return out;
 }
+
+export function shuffleArray<T>(array: T[]) {
+  for (let i = array.length - 1; i >= 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+export function randomString(n: number): string {
+  const chars = "abcdefghijklmnopqrstuvwxyz";
+  let out = "";
+  for (let i = 0; i < n; i++) {
+    out += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return out;
+}

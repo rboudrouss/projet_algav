@@ -27,7 +27,7 @@ export default class HybridTrieNode {
     return this.middle?.search(word.slice(1)) ?? false;
   }
 
-  insert(word: string): HybridTrieNode {
+  insert(word: string, latestMiddleNode: HybridTrieNode | null = null): HybridTrieNode {
     if (word.length === 1 && word[0] === this.char) {
       this.is_end_of_word = true;
       return this;
@@ -37,13 +37,13 @@ export default class HybridTrieNode {
 
     if (char < this.char) {
       this.left ??= new HybridTrieNode(char);
-      this.left = this.left.insert(word);
+      this.left = this.left.insert(word, latestMiddleNode);
     } else if (char > this.char) {
       this.right ??= new HybridTrieNode(char);
-      this.right = this.right.insert(word);
+      this.right = this.right.insert(word, latestMiddleNode);
     } else {
       this.middle ??= new HybridTrieNode(word[1]);
-      if (word.length > 1) this.middle = this.middle.insert(word.slice(1));
+      if (word.length > 1) this.middle = this.middle.insert(word.slice(1), this.middle);
       else this.middle.is_end_of_word = true;
     }
 

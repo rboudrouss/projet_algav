@@ -184,6 +184,7 @@ export default class HybridTrieNode {
     return this;
   }
 
+  // Full Balance
   // on reconstuit l'arbre en prenant le mot médian comme racine
   // puis on insère succéssivement les mots à gauche et à droite de ce mot médian
   balance(): HybridTrieNode {
@@ -216,6 +217,21 @@ export default class HybridTrieNode {
     node.middle = json.middle ? HybridTrieNode.fromJSON(json.middle) : null;
     node.right = json.right ? HybridTrieNode.fromJSON(json.right) : null;
     return node;
+  }
+
+  isFullEquilibre(): boolean {
+    return (
+      Math.abs((this.left?.height() ?? 0) - (this.right?.height() ?? 0)) <= 1 &&
+      (this.left?.isFullEquilibre() ?? true) &&
+      (this.middle?.isFullEquilibre() ?? true) &&
+      (this.right?.isFullEquilibre() ?? true)
+    );
+  }
+
+  isLocalEquilibre(): boolean {
+    return (
+      Math.abs((this.left?.height() ?? 0) - (this.right?.height() ?? 0)) <= 1
+    );
   }
 }
 

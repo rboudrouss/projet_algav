@@ -10,7 +10,6 @@
  *    - On pourrait utiliser une Hashtable pour stocker les enfants. (Tableau + Hashage)
  *    - On pourrait utiliser un tableau dynamique et parcourir le tableau pour trouver l'enfant. (Pas la meilleure solution)
  */
-// FIXME
 export default class PatriciaTrieNode {
   label: string;
   // Dans l'exo il est demandé d'utiliser un caractère pour marquer la fin d'un mot, j'utilise un booléen pour pas avoir la contrainte de l'encodage

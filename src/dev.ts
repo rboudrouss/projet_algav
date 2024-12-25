@@ -15,9 +15,16 @@ let mots =
 
 console.log("Hybrid Trie");
 
-let hybridTrie = new HybridTrie();
+const trie = new HybridTrie();
+trie.insert("car").insert("carts").insert("cat").insert("dog");
+console.log(trie);
 
-hybridTrie.insert("ca").insert("co");
-
-console.log(hybridTrie);
-console.log(hybridTrie.root?.middle?.right?.parent?.char);
+console.log(trie.search(""), false);
+console.log(trie.search("c"), false);
+console.log(trie.search("ca"), false);
+console.log(trie.search("car"), true);
+console.log(trie.search("carts"), true);
+console.log(trie.search("cart"), false);
+console.log(trie.search("cat"), true);
+console.log(trie.search("dog"), true);
+console.log(trie.search("doggy"), false);

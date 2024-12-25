@@ -10,9 +10,9 @@ export default class HybridTrie {
   // Insertion
   insert(word: string) {
     if (!this.root) {
-      this.root = new HybridTrieNode(word[0], null);
+      this.root = new HybridTrieNode(word[0]);
     }
-    this.root.insert(word);
+    this.root = this.root.insert(word);
     return this;
   }
 
@@ -70,7 +70,8 @@ export default class HybridTrie {
     } else if (!trie.root) {
       return this;
     } else {
-      this.root.merge(trie.root);
+      const words = trie.listWords();
+      words.forEach((word) => this.insert(word));
     }
     return this;
   }

@@ -1,19 +1,17 @@
+// si true vérifie que l'arbre est équilibré sinon l'équilibre localement
+// si false insere juste les mots sans équilibrer
+const BALANCE = true;
+
 export default class HybridTrieNode {
   char: string; // Le caractère stocké dans le nœud
   is_end_of_word: boolean; // Indique si c'est la fin d'un mot
   left: HybridTrieNode | null; // Fils gauche
   middle: HybridTrieNode | null; // Fils milieu
   right: HybridTrieNode | null; // Fils droit
-  parent: HybridTrieNode | null; // Noeud parent
 
-  constructor(
-    char: string,
-    parent: HybridTrieNode | null,
-    is_end_of_word = false
-  ) {
+  constructor(char: string, is_end_of_word = false) {
     this.char = char;
     this.is_end_of_word = is_end_of_word;
-    this.parent = parent;
     this.left = null;
     this.middle = null;
     this.right = null;
@@ -33,10 +31,7 @@ export default class HybridTrieNode {
     return this.middle?.search(word.slice(1)) ?? false;
   }
 
-  insert(
-    word: string,
-    latestMiddle: HybridTrieNode | null = null
-  ): HybridTrieNode {
+  insert(word: string): HybridTrieNode {
     if (word.length === 1 && word[0] === this.char) {
       this.is_end_of_word = true;
       return this;
@@ -45,19 +40,18 @@ export default class HybridTrieNode {
     const char = word[0];
 
     if (char < this.char) {
-      this.left ??= new HybridTrieNode(char, latestMiddle);
-      this.left = this.left.insert(word, latestMiddle);
+      this.left ??= new HybridTrieNode(char);
+      this.left = this.left.insert(word);
     } else if (char > this.char) {
-      this.right ??= new HybridTrieNode(char, latestMiddle);
-      this.right = this.right.insert(word, latestMiddle);
+      this.right ??= new HybridTrieNode(char);
+      this.right = this.right.insert(word);
     } else {
-      this.middle ??= new HybridTrieNode(word[1], this);
-      if (word.length > 1)
-        this.middle = this.middle.insert(word.slice(1), this);
+      this.middle ??= new HybridTrieNode(word[1]);
+      if (word.length > 1) this.middle = this.middle.insert(word.slice(1));
       else this.middle.is_end_of_word = true;
     }
 
-    return this;
+    return BALANCE ? this.balance() : this;
   }
 
   delete(word: string): HybridTrieNode | null {
@@ -168,6 +162,10 @@ export default class HybridTrieNode {
     return height;
   }
 
+  getBalanceFactor(): number {
+    return (this.left?.height() ?? 0) - (this.right?.height() ?? 0);
+  }
+
   averageDepth(): number {
     let sum = 0;
     sum += this.left?.averageDepth() ?? 0;
@@ -186,24 +184,63 @@ export default class HybridTrieNode {
     return (this.middle?.count() ?? 0) + (this.is_end_of_word ? 1 : 0);
   }
 
-  // Naïve implementation, is not asked in the exercise
-  merge(node: HybridTrieNode): HybridTrieNode {
-    const words = node.listWords();
-    words.forEach((word) => this.insert(word));
+  // Implemented on the HybridTrie class
+  merge() {
+    throw new Error("Call the merge method from the HybridTrie class");
+  }
+
+  rotateRight(): HybridTrieNode {
+    const x = this.left!;
+    const T2 = x.right;
+
+    x.right = this;
+    this.left = T2;
+
+    return x;
+  }
+
+  rotateLeft(): HybridTrieNode {
+    const y = this.right!;
+    const T2 = y.left;
+
+    y.left = this;
+    this.right = T2;
+
+    return y;
+  }
+
+  balance(): HybridTrieNode {
+    const balanceFactor = this.getBalanceFactor();
+
+    if (balanceFactor > 1) {
+      if ((this.left?.getBalanceFactor() ?? 0) < 0) {
+        this.left = this.left!.rotateLeft();
+      }
+      return this.rotateRight();
+    }
+
+    if (balanceFactor < -1) {
+      if ((this.right?.getBalanceFactor() ?? 0) > 0) {
+        this.right = this.right!.rotateRight();
+      }
+      return this.rotateLeft();
+    }
+
     return this;
   }
 
   // Full Balance
   // on reconstuit l'arbre en prenant le mot médian comme racine
   // puis on insère succéssivement les mots à gauche et à droite de ce mot médian
-  balance(): HybridTrieNode {
+  // Juste un test pour voir si ça marche, pas une méthode optimisée de l'exo
+  fullBalance(): HybridTrieNode {
     const words = this.listWords().sort();
 
     if (words.length <= 1) return this;
 
     const medianWord = words.at(Math.floor(words.length / 2))!;
 
-    const newRoot = new HybridTrieNode(medianWord[0], null);
+    const newRoot = new HybridTrieNode(medianWord[0]);
 
     const insertInOrder = (start: number, end: number) => {
       if (start > end) return;
@@ -220,24 +257,11 @@ export default class HybridTrieNode {
     return newRoot;
   }
 
-  static fromJSON(
-    json: HybridTrieNodeJSON,
-    latestMiddle: HybridTrieNode | null = null
-  ): HybridTrieNode {
-    const node = new HybridTrieNode(
-      json.char,
-      latestMiddle,
-      json.is_end_of_word
-    );
-    node.left = json.left
-      ? HybridTrieNode.fromJSON(json.left, latestMiddle)
-      : null;
-    node.middle = json.middle
-      ? HybridTrieNode.fromJSON(json.middle, node)
-      : null;
-    node.right = json.right
-      ? HybridTrieNode.fromJSON(json.right, latestMiddle)
-      : null;
+  static fromJSON(json: HybridTrieNodeJSON): HybridTrieNode {
+    const node = new HybridTrieNode(json.char, json.is_end_of_word);
+    node.left = json.left ? HybridTrieNode.fromJSON(json.left) : null;
+    node.middle = json.middle ? HybridTrieNode.fromJSON(json.middle) : null;
+    node.right = json.right ? HybridTrieNode.fromJSON(json.right) : null;
     return node;
   }
 

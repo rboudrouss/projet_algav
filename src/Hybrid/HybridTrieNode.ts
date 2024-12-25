@@ -4,10 +4,12 @@ export default class HybridTrieNode {
   left: HybridTrieNode | null; // Fils gauche
   middle: HybridTrieNode | null; // Fils milieu
   right: HybridTrieNode | null; // Fils droit
+  parent: HybridTrieNode | null; // Noeud parent
 
-  constructor(char: string, is_end_of_word = false) {
+  constructor(char: string, parent: HybridTrieNode | null, is_end_of_word = false) {
     this.char = char;
     this.is_end_of_word = is_end_of_word;
+    this.parent = parent;
     this.left = null;
     this.middle = null;
     this.right = null;
@@ -27,7 +29,7 @@ export default class HybridTrieNode {
     return this.middle?.search(word.slice(1)) ?? false;
   }
 
-  insert(word: string): HybridTrieNode {
+  insert(word: string, latestMiddle: HybridTrieNode | null = null): HybridTrieNode {
     if (word.length === 1 && word[0] === this.char) {
       this.is_end_of_word = true;
       return this;
@@ -36,14 +38,14 @@ export default class HybridTrieNode {
     const char = word[0];
 
     if (char < this.char) {
-      this.left ??= new HybridTrieNode(char);
-      this.left = this.left.insert(word);
+      this.left ??= new HybridTrieNode(char, latestMiddle);
+      this.left = this.left.insert(word, latestMiddle);
     } else if (char > this.char) {
-      this.right ??= new HybridTrieNode(char);
-      this.right = this.right.insert(word);
+      this.right ??= new HybridTrieNode(char, latestMiddle);
+      this.right = this.right.insert(word, latestMiddle);
     } else {
-      this.middle ??= new HybridTrieNode(word[1]);
-      if (word.length > 1) this.middle = this.middle.insert(word.slice(1));
+      this.middle ??= new HybridTrieNode(word[1], this);
+      if (word.length > 1) this.middle = this.middle.insert(word.slice(1), this.middle);
       else this.middle.is_end_of_word = true;
     }
 
@@ -194,7 +196,7 @@ export default class HybridTrieNode {
 
     const medianWord = words.at(Math.floor(words.length / 2))!;
 
-    const newRoot = new HybridTrieNode(medianWord[0]);
+    const newRoot = new HybridTrieNode(medianWord[0], null);
 
     const insertInOrder = (start: number, end: number) => {
       if (start > end) return;
@@ -211,11 +213,11 @@ export default class HybridTrieNode {
     return newRoot;
   }
 
-  static fromJSON(json: HybridTrieNodeJSON): HybridTrieNode {
-    const node = new HybridTrieNode(json.char, json.is_end_of_word);
-    node.left = json.left ? HybridTrieNode.fromJSON(json.left) : null;
-    node.middle = json.middle ? HybridTrieNode.fromJSON(json.middle) : null;
-    node.right = json.right ? HybridTrieNode.fromJSON(json.right) : null;
+  static fromJSON(json: HybridTrieNodeJSON, latestMiddle: HybridTrieNode | null = null): HybridTrieNode {
+    const node = new HybridTrieNode(json.char, latestMiddle, json.is_end_of_word);
+    node.left = json.left ? HybridTrieNode.fromJSON(json.left, latestMiddle) : null;
+    node.middle = json.middle ? HybridTrieNode.fromJSON(json.middle, node) : null;
+    node.right = json.right ? HybridTrieNode.fromJSON(json.right, latestMiddle) : null;
     return node;
   }
 

@@ -10,7 +10,7 @@ export default class HybridTrie {
   // Insertion
   insert(word: string) {
     if (!this.root) {
-      this.root = new HybridTrieNode(word[0]);
+      this.root = new HybridTrieNode(word[0], null);
     }
     this.root.insert(word);
     return this;

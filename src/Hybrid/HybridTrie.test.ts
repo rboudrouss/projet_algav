@@ -1,5 +1,6 @@
-import { assertEquals } from "jsr:@std/assert";
+import { assertEquals, assertStrictEquals } from "jsr:@std/assert";
 import HybridTrie from "./HybridTrie.ts";
+import { replacer } from "../helpers/index.ts";
 
 Deno.test("HybridTrie should insert correctly", () => {
   const trie = new HybridTrie();
@@ -33,6 +34,18 @@ Deno.test("HybridTrie should handle complex insertions", () => {
 
   assertEquals(trie.root?.middle?.middle?.middle?.middle?.char, "s"); // CARTS
   assertEquals(trie.root?.middle?.middle?.middle?.middle?.is_end_of_word, true);
+});
+
+Deno.test("HybridTrie apoint parent pointer correctly", () => {
+  const trie = new HybridTrie();
+
+  trie.insert("ca").insert("co").insert("cat").insert("car").insert("dog");
+
+  const c = trie.root;
+  assertStrictEquals(c?.parent, null);
+  assertStrictEquals(c?.right?.parent, null);
+  assertStrictEquals(c?.middle?.parent, c);
+  assertStrictEquals(c?.middle?.right?.parent, c?.middle);
 });
 
 Deno.test("HybridTrie should search correctly", () => {
@@ -218,7 +231,7 @@ Deno.test(
     const words = ["car", "carts", "cat", "dog", "doggy", "doggo"];
     words.forEach((word) => trie.insert(word));
 
-    const json = JSON.stringify(trie.root);
+    const json = JSON.stringify(trie.root, replacer);
     const newTrie = HybridTrie.fromJSON(JSON.parse(json));
 
     assertEquals(newTrie.listWords().sort(), words.sort());

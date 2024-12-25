@@ -24,7 +24,7 @@ const actions: {
       const trie = new HybridTrie();
       const content = readAndProcessFile(fichier);
       content.forEach((mot) => trie.insert(mot));
-      const out = JSON.stringify(trie.root, null, 2);
+      const out = JSON.stringify(trie.root, replacer, 2);
       Deno.writeTextFileSync("trie.json", out);
     },
   },

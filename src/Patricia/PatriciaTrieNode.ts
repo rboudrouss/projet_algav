@@ -150,7 +150,7 @@ export default class PatriciaTrieNode {
   countNullNodes(): number {
     let count = 0;
     for (const child of this.children.values()) count += child.countNullNodes();
-    if (this.children.size === 0) count++; // HACK .size c'est un peu tricher pour l'exo
+    if (this.children.size === 0) count++;
     return count;
   }
 
@@ -165,10 +165,9 @@ export default class PatriciaTrieNode {
     if (this.children.size === 0) return 0;
     let sum = 0;
     for (const child of this.children.values()) sum += child.averageDepth();
-    return sum / this.children.size + 1; // HACK .size c'est un peu tricher pour l'exo
+    return sum / this.children.size + 1;
   }
 
-  // FIXME pas sûr de la méthode
   countPrefixes(prefix: string): number {
     if (prefix.length === 0) return this.count();
     for (const [key, child] of this.children) {
@@ -179,7 +178,6 @@ export default class PatriciaTrieNode {
     return 0;
   }
 
-  // FIXME pas sûr de la méthode
   merge(node: PatriciaTrieNode): PatriciaTrieNode {
     if (node.is_end_of_word) this.is_end_of_word = true;
     for (const [key, child] of node.children) {

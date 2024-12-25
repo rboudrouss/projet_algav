@@ -1,6 +1,5 @@
 import PatriciaTrieNode, { PatriciaTrieNodeJSON } from "./PatriciaTrieNode.ts";
 
-// TODO hmmm cette classe est-elle vraiment nécessaire ?
 export default class PatriciaTrie {
   root: PatriciaTrieNode;
 

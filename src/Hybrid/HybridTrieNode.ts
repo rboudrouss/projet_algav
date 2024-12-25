@@ -53,7 +53,7 @@ export default class HybridTrieNode {
     } else {
       this.middle ??= new HybridTrieNode(word[1], this);
       if (word.length > 1)
-        this.middle = this.middle.insert(word.slice(1), this.middle);
+        this.middle = this.middle.insert(word.slice(1), this);
       else this.middle.is_end_of_word = true;
     }
 
@@ -77,7 +77,6 @@ export default class HybridTrieNode {
       this.middle = this.middle?.delete(word.slice(1)) ?? null;
     }
 
-    // HACK pour supprimer les noeuds vides, y a probablement une meilleure façon de faire directement dans les conditions ci-dessus
     if (!this.left && !this.middle && !this.right && !this.is_end_of_word)
       return null;
     return this;

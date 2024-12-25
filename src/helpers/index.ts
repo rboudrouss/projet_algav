@@ -39,8 +39,8 @@ export function readJsonFile(file: string): unknown {
   let out;
   try {
     const text = readFile(file)
-      .replace(/:\s*[\r\n]*\s*yes/g, ": true")
-      .replace(/:\s*[\r\n]*\s*no/g, ": false");
+      // .replace(/:\s*[\r\n]*\s*yes/g, ": true")
+      // .replace(/:\s*[\r\n]*\s*no/g, ": false");
     out = JSON.parse(text);
   } catch (err) {
     console.error("Erreur lors de la lecture du json" + file);

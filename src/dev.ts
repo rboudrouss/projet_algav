@@ -17,12 +17,7 @@ console.log("Hybrid Trie");
 
 let hybridTrie = new HybridTrie();
 
-hybridTrie.insert("car").insert("cat");
-hybridTrie.display();
-console.log("Nombre de mots: ", hybridTrie.count());
-hybridTrie.delete("cat");
-hybridTrie.display();
+hybridTrie.insert("ca").insert("co");
 
 console.log(hybridTrie);
-console.log(hybridTrie.search("cat"));
-console.log(hybridTrie.search("car"));
+console.log(hybridTrie.root?.middle?.right?.parent?.char);

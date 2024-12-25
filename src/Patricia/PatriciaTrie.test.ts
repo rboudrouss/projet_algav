@@ -1,16 +1,49 @@
-import { assertEquals } from "https://deno.land/std@0.100.0/testing/asserts.ts";
-import  PatriciaTrie  from "./PatriciaTrie.ts";
+import PatriciaTrie from "./PatriciaTrie.ts";
 import { replacer } from "../helpers/index.ts";
+import { assert, assertEquals } from "jsr:@std/assert";
 
 Deno.test("PatriciaTrie should insert correctly", () => {
   const trie = new PatriciaTrie();
   trie.insert("car");
+
+  assertEquals(trie.root.label, "");
+  assertEquals(trie.root.children.size, 1);
+  assertEquals(trie.root.is_end_of_word, false);
+  assert(trie.root.children.get("car"));
+
+  const node = trie.root.children.get("car")!;
+  assertEquals(node.label, "car");
+  assertEquals(node.children.size, 0);
+  assertEquals(node.is_end_of_word, true);
 });
 
 Deno.test("PatriciaTrie should handle complex insertions", () => {
   const trie = new PatriciaTrie();
 
   trie.insert("car").insert("carts").insert("cat").insert("dog");
+  assert(trie.root.children.get("ca"));
+  
+  const ca = trie.root.children.get("ca")!;
+
+  assertEquals(ca.label, "ca");
+  assertEquals(ca.children.size, 2);
+  assertEquals(ca.is_end_of_word, false);
+
+  assert(ca.children.get("r"));
+  assert(ca.children.get("t"));
+
+  const r = ca.children.get("r")!;
+  assertEquals(r.label, "r");
+  assertEquals(r.children.size, 1);
+  assertEquals(r.is_end_of_word, true);
+  assert(r.children.get("ts"));
+
+  const ts = r.children.get("ts")!;
+  assertEquals(ts.label, "ts");
+  assertEquals(ts.children.size, 0);
+  assertEquals(ts.is_end_of_word, true);
+
+  assert(trie.root.children.get("dog"));
 });
 
 Deno.test("PatriciaTrie should search correctly", () => {
@@ -152,17 +185,20 @@ Deno.test("PatriciaTrie should calculate average depth correctly", () => {
   assertEquals(trie.averageDepth(), 2);
 });
 
-Deno.test("PatriciaTrie should count how many words start with a prefix", () => {
-  const trie = new PatriciaTrie();
-  trie.insert("car").insert("carts").insert("cat").insert("dog");
+Deno.test(
+  "PatriciaTrie should count how many words start with a prefix",
+  () => {
+    const trie = new PatriciaTrie();
+    trie.insert("car").insert("carts").insert("cat").insert("dog");
 
-  assertEquals(trie.countPrefixes("c"), 3);
-  assertEquals(trie.countPrefixes("ca"), 3);
-  assertEquals(trie.countPrefixes("car"), 2);
-  assertEquals(trie.countPrefixes("cart"), 1);
-  assertEquals(trie.countPrefixes("dog"), 1);
-  assertEquals(trie.countPrefixes("doggy"), 0);
-});
+    assertEquals(trie.countPrefixes("c"), 3);
+    assertEquals(trie.countPrefixes("ca"), 3);
+    assertEquals(trie.countPrefixes("car"), 2);
+    assertEquals(trie.countPrefixes("cart"), 1);
+    assertEquals(trie.countPrefixes("dog"), 1);
+    assertEquals(trie.countPrefixes("doggy"), 0);
+  }
+);
 
 Deno.test("PatriciaTries should merge correctly", () => {
   const trie1 = new PatriciaTrie();

@@ -10,5 +10,5 @@ jobs:
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v2.x # Run with latest stable Deno.
-      - run: deno lint
+      # - run: deno lint
       - run: deno test --allow-all

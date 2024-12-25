@@ -2,7 +2,7 @@
  * Ici, on utilise un booléen pour ne pas avoir la contrainte de l'encodage.
  * Aussi, on utilise un Map pour stocker les enfants et on a recours à des méthodes haut niveau pour parcourir les enfants et déterminer si elle est vide.
  * C'est un peu tricher pour l'exo. Mais c'est voulu pour ne pas contraindre l'implémentation à un encodage particulier.
- * 
+ *
  * Si nous devions implémenter cela dans un langage de programmation bas niveau, (ou avoir une compréhension plus profonde de la structure de données) :
  *   - On pourrait utiliser un caractère pour marquer la fin d'un mot. (Remplacer le booléen)
  *   - On pourrait utiliser un tableau pour stocker les enfants. (Remplacer le Map) Pour cela plusieurs solutions sont possibles :

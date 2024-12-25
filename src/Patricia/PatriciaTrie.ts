@@ -65,7 +65,7 @@ export default class PatriciaTrie {
     this.root.merge(trie.root);
     return this;
   }
-  
+
   static fromJson(json: PatriciaTrieNodeJSON): PatriciaTrie {
     const trie = new PatriciaTrie();
     trie.root = PatriciaTrieNode.fromJson(json);

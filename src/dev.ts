@@ -23,6 +23,6 @@ console.log("Nombre de mots: ", hybridTrie.count());
 hybridTrie.delete("cat");
 hybridTrie.display();
 
-console.log(hybridTrie)
+console.log(hybridTrie);
 console.log(hybridTrie.search("cat"));
-console.log(hybridTrie.search("car"))
+console.log(hybridTrie.search("car"));

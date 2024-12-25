@@ -6,7 +6,11 @@ export default class HybridTrieNode {
   right: HybridTrieNode | null; // Fils droit
   parent: HybridTrieNode | null; // Noeud parent
 
-  constructor(char: string, parent: HybridTrieNode | null, is_end_of_word = false) {
+  constructor(
+    char: string,
+    parent: HybridTrieNode | null,
+    is_end_of_word = false
+  ) {
     this.char = char;
     this.is_end_of_word = is_end_of_word;
     this.parent = parent;
@@ -29,7 +33,10 @@ export default class HybridTrieNode {
     return this.middle?.search(word.slice(1)) ?? false;
   }
 
-  insert(word: string, latestMiddle: HybridTrieNode | null = null): HybridTrieNode {
+  insert(
+    word: string,
+    latestMiddle: HybridTrieNode | null = null
+  ): HybridTrieNode {
     if (word.length === 1 && word[0] === this.char) {
       this.is_end_of_word = true;
       return this;
@@ -45,7 +52,8 @@ export default class HybridTrieNode {
       this.right = this.right.insert(word, latestMiddle);
     } else {
       this.middle ??= new HybridTrieNode(word[1], this);
-      if (word.length > 1) this.middle = this.middle.insert(word.slice(1), this.middle);
+      if (word.length > 1)
+        this.middle = this.middle.insert(word.slice(1), this.middle);
       else this.middle.is_end_of_word = true;
     }
 
@@ -213,11 +221,24 @@ export default class HybridTrieNode {
     return newRoot;
   }
 
-  static fromJSON(json: HybridTrieNodeJSON, latestMiddle: HybridTrieNode | null = null): HybridTrieNode {
-    const node = new HybridTrieNode(json.char, latestMiddle, json.is_end_of_word);
-    node.left = json.left ? HybridTrieNode.fromJSON(json.left, latestMiddle) : null;
-    node.middle = json.middle ? HybridTrieNode.fromJSON(json.middle, node) : null;
-    node.right = json.right ? HybridTrieNode.fromJSON(json.right, latestMiddle) : null;
+  static fromJSON(
+    json: HybridTrieNodeJSON,
+    latestMiddle: HybridTrieNode | null = null
+  ): HybridTrieNode {
+    const node = new HybridTrieNode(
+      json.char,
+      latestMiddle,
+      json.is_end_of_word
+    );
+    node.left = json.left
+      ? HybridTrieNode.fromJSON(json.left, latestMiddle)
+      : null;
+    node.middle = json.middle
+      ? HybridTrieNode.fromJSON(json.middle, node)
+      : null;
+    node.right = json.right
+      ? HybridTrieNode.fromJSON(json.right, latestMiddle)
+      : null;
     return node;
   }
 

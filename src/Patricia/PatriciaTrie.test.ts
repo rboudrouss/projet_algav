@@ -22,7 +22,7 @@ Deno.test("PatriciaTrie should handle complex insertions", () => {
 
   trie.insert("car").insert("carts").insert("cat").insert("dog");
   assert(trie.root.children.get("ca"));
-  
+
   const ca = trie.root.children.get("ca")!;
 
   assertEquals(ca.label, "ca");

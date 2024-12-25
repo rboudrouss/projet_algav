@@ -44,20 +44,6 @@ Deno.bench("HybridTrie simple insertion", (b) => {
   // b.end()
 });
 
-Deno.bench("HybridTrie random insertions 100~150kb", (b) => {
-  const trie = new HybridTrie();
-
-  const file = files[Math.floor(Math.random() * files.length)];
-
-  const content = readAndProcessFile(`./Shakespeare/${file.name}`);
-
-  b.start();
-  content.forEach((mot) => {
-    trie.insert(mot);
-  });
-  b.end();
-});
-
 Deno.bench("HybridTrie insertion of 100 words", () => {
   const trie = new HybridTrie();
   input100.forEach((mot) => trie.insert(mot));

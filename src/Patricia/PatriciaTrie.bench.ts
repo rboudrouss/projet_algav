@@ -46,20 +46,6 @@ Deno.bench("PatriciaTrie simple insertion", (b) => {
   // b.end()
 });
 
-Deno.bench("PatriciaTrie random insertions 100~150kb", (b) => {
-  const trie = new PatriciaTrie();
-
-  const file = files[Math.floor(Math.random() * files.length)];
-
-  const content = readAndProcessFile(`./Shakespeare/${file.name}`);
-
-  b.start();
-  content.forEach((mot) => {
-    trie.insert(mot);
-  });
-  b.end();
-});
-
 Deno.bench("PatriciaTrie insertion of 100 words", () => {
   const trie = new PatriciaTrie();
   input100.forEach((mot) => trie.insert(mot));

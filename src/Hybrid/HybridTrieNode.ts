@@ -3,7 +3,7 @@
 const BALANCE = true;
 
 export default class HybridTrieNode {
-  char: string; // Le caractère stocké dans le nœud
+  char: string; // Le caractère stocké dans le noeud
   is_end_of_word: boolean; // Indique si c'est la fin d'un mot
   left: HybridTrieNode | null; // Fils gauche
   middle: HybridTrieNode | null; // Fils milieu
@@ -94,7 +94,7 @@ export default class HybridTrieNode {
   }
 
   displayOld(prefix = "", isTail = true): void {
-    // Afficher le nœud courant
+    // Afficher le noeud courant
     console.log(
       `${prefix}${isTail ? "└── " : "├── "}${this.char}${
         this.is_end_of_word ? " (fin de mot)" : ""

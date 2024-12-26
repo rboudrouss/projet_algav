@@ -191,9 +191,12 @@ export default class HybridTrieNode {
 
   rotateRight(): HybridTrieNode {
     const x = this.left!;
-    const T2 = x.right;
+    let T2 = x.right;
+    if (!T2 || (!T2.left && !T2.right && !T2.middle && !T2.is_end_of_word)) T2 = null;
+    
 
     x.right = this;
+    if (!this.middle && !this.left && !this.right && !this.is_end_of_word) x.right = null;
     this.left = T2;
 
     return x;
@@ -201,9 +204,11 @@ export default class HybridTrieNode {
 
   rotateLeft(): HybridTrieNode {
     const y = this.right!;
-    const T2 = y.left;
+    let T2 = y.left;
+    if (!T2 || (!T2.left && !T2.right && !T2.middle && !T2.is_end_of_word)) T2 = null;
 
     y.left = this;
+    if (!this.middle && !this.left && !this.right && !this.is_end_of_word) y.left = null;
     this.right = T2;
 
     return y;

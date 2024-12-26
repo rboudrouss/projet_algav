@@ -147,7 +147,7 @@ export default class PatriciaTrieNode {
 
     if (this.is_end_of_word) words.push(prefix);
 
-    for (const [key, child] of this.children)
+    for (const child of this.children.values())
       words.push(...child.listWords(prefix + child.label));
 
     return words;

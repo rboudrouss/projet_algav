@@ -11,3 +11,4 @@ le projet a été codé et testé avec **Deno 2.0.5** mais n'importe quelle vers
 - `deno test` permet de lancer les tests unitaires. Les test sont reconnaissable par leur extension sous la forme `.test.ts`. Il y en a un pour chaque trie dans le dossier correspondant.
 
 - `deno run bench` permet de lancer les benchmarks. Les benchmarks sont reconnaissable par leur extension sous la forme `.bench.ts`. Il y en a un pour chaque trie dans le dossier correspondant.
+

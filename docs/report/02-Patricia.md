@@ -51,6 +51,8 @@ Ces opérations procédent de la même manière, elles parcourent l'arbre en pro
 Que ce soit dans le pire des cas ou dans le meilleur des cas, nous sommes obligés de parcourir tous les noeuds de l'arbre pour effectuer ces opérations. 
 La complexité de ces opérations est en $O(n)$ où $n$ est le nombre de noeuds de l'arbre.
 
+NB: Pour la méthode ComptageNil, au vu de notre implémentation les pointeurs nulles sont abstractisés par l'objet `Map` de Javascript, pour le bien de l'exercice nous considérons un `Map` vide comme un pointeur nul.
+
 
 ### Recherche et Suppression
 

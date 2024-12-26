@@ -9,9 +9,9 @@ Deno.test("PatriciaTrie should insert correctly", () => {
   assertEquals(trie.root.label, "");
   assertEquals(trie.root.children.size, 1);
   assertEquals(trie.root.is_end_of_word, false);
-  assert(trie.root.children.get("car"));
+  assert(trie.root.children.get("c"));
 
-  const node = trie.root.children.get("car")!;
+  const node = trie.root.children.get("c")!;
   assertEquals(node.label, "car");
   assertEquals(node.children.size, 0);
   assertEquals(node.is_end_of_word, true);
@@ -21,9 +21,9 @@ Deno.test("PatriciaTrie should handle complex insertions", () => {
   const trie = new PatriciaTrie();
 
   trie.insert("car").insert("carts").insert("cat").insert("dog");
-  assert(trie.root.children.get("ca"));
+  assert(trie.root.children.get("c"));
 
-  const ca = trie.root.children.get("ca")!;
+  const ca = trie.root.children.get("c")!;
 
   assertEquals(ca.label, "ca");
   assertEquals(ca.children.size, 2);
@@ -36,14 +36,14 @@ Deno.test("PatriciaTrie should handle complex insertions", () => {
   assertEquals(r.label, "r");
   assertEquals(r.children.size, 1);
   assertEquals(r.is_end_of_word, true);
-  assert(r.children.get("ts"));
+  assert(r.children.get("t"));
 
-  const ts = r.children.get("ts")!;
+  const ts = r.children.get("t")!;
   assertEquals(ts.label, "ts");
   assertEquals(ts.children.size, 0);
   assertEquals(ts.is_end_of_word, true);
 
-  assert(trie.root.children.get("dog"));
+  assert(trie.root.children.get("d"));
 });
 
 Deno.test("PatriciaTrie should search correctly", () => {

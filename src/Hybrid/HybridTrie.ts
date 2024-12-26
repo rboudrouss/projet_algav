@@ -27,7 +27,7 @@ export default class HybridTrie {
   }
 
   // Suppression
-  delete(word: string): HybridTrie {
+  delete(word: string) {
     if (!this.root) return this;
     this.root = this.root.delete(word);
     return this;
@@ -38,7 +38,7 @@ export default class HybridTrie {
     return this.root?.count() ?? 0;
   }
 
-  insertMany(...words: (string | string[])[]): HybridTrie {
+  insertMany(...words: (string | string[])[]) {
     words.forEach((word) => {
       if (Array.isArray(word)) this.insertMany(...word);
       else this.insert(word);
@@ -72,7 +72,7 @@ export default class HybridTrie {
   }
 
   // Fusionner deux Hybrid-Tries
-  merge(trie: HybridTrie): HybridTrie {
+  merge(trie: HybridTrie) {
     if (!this.root) {
       this.root = trie.root;
     } else if (!trie.root) {

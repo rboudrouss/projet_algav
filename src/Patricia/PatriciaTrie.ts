@@ -18,6 +18,14 @@ export default class PatriciaTrie {
     return this;
   }
 
+  insertMany(...words: (string | string[])[]) {
+    words.forEach((word) => {
+      if (Array.isArray(word)) this.insertMany(...word);
+      else this.insert(word);
+    });
+    return this;
+  }
+
   // Suppression d'un mot
   delete(word: string) {
     this.root.delete(word);
@@ -60,7 +68,7 @@ export default class PatriciaTrie {
   }
 
   // Fusionner deux Patricia-Tries
-  merge(trie: PatriciaTrie): PatriciaTrie {
+  merge(trie: PatriciaTrie) {
     this.root.merge(trie.root);
     return this;
   }

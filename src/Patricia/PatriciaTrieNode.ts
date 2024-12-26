@@ -41,62 +41,62 @@ export default class PatriciaTrieNode {
 
     const child = this.children.get(word[0]);
 
-    if (child) {
-      const label = child.label;
-      let commonPrefixLength = 0;
-
-      // Identifier le préfixe commun
-      while (
-        commonPrefixLength < label.length &&
-        commonPrefixLength < word.length &&
-        label[commonPrefixLength] === word[commonPrefixLength]
-      )
-        commonPrefixLength++;
-
-      // Cas où tout le label de l'enfant correspond
-      if (commonPrefixLength === label.length) {
-        this.children.set(
-          label[0],
-          child.insert(word.slice(commonPrefixLength))
-        );
-        return this;
-      }
-
-      // supprimer l'enfant existant
-      this.children.delete(label[0]);
-
-      // Fractionner l'enfant
-      const commonPrefix = label.slice(0, commonPrefixLength);
-      const oldSuffix = label.slice(commonPrefixLength);
-      const remainingWord = word.slice(commonPrefixLength);
-
-      // Nouveau noeud pour l'ancien suffixe
-      const newChild = new PatriciaTrieNode(oldSuffix, child.is_end_of_word);
-      newChild.children = child.children;
-
-      // Mettre à jour l'enfant existant
-      child.label = commonPrefix;
-      child.is_end_of_word = false;
-      child.children = new Map();
-      child.children.set(oldSuffix[0], newChild);
-
-      // Ajouter le reste du mot s'il en reste
-      if (remainingWord.length > 0) {
-        child.children.set(
-          remainingWord[0],
-          new PatriciaTrieNode(remainingWord, true)
-        );
-      } else {
-        child.is_end_of_word = true;
-      }
-
-      // cas où pas de préfixe commun
-      this.children.set(commonPrefix[0], child);
+    // Aucun préfixe commun
+    if (!child) {
+      // ajouter un nouveau noeud
+      this.children.set(word[0], new PatriciaTrieNode(word, true));
       return this;
     }
 
-    // Aucun préfixe commun, ajouter un nouveau noeud
-    this.children.set(word[0], new PatriciaTrieNode(word, true));
+    // cas où préfixe commun
+
+    const label = child.label;
+    let commonPrefixLength = 0;
+
+    // Identifier le préfixe commun
+    while (
+      commonPrefixLength < label.length &&
+      commonPrefixLength < word.length &&
+      label[commonPrefixLength] === word[commonPrefixLength]
+    )
+      commonPrefixLength++;
+
+    // Cas où tout le label de l'enfant correspond
+    if (commonPrefixLength === label.length) {
+      this.children.set(label[0], child.insert(word.slice(commonPrefixLength)));
+      return this;
+    }
+
+    // supprimer l'enfant existant
+    this.children.delete(label[0]);
+
+    // Fractionner l'enfant
+    const commonPrefix = label.slice(0, commonPrefixLength);
+    const oldSuffix = label.slice(commonPrefixLength);
+    const remainingWord = word.slice(commonPrefixLength);
+
+    // Nouveau noeud pour l'ancien suffixe
+    const newChild = new PatriciaTrieNode(oldSuffix, child.is_end_of_word);
+    newChild.children = child.children;
+
+    // Mettre à jour l'enfant existant
+    child.label = commonPrefix;
+    child.is_end_of_word = false;
+    child.children = new Map();
+    child.children.set(oldSuffix[0], newChild);
+
+    // Ajouter le reste du mot s'il en reste
+    if (remainingWord.length > 0) {
+      child.children.set(
+        remainingWord[0],
+        new PatriciaTrieNode(remainingWord, true)
+      );
+    } else {
+      child.is_end_of_word = true;
+    }
+
+    // cas où pas de préfixe commun
+    this.children.set(commonPrefix[0], child);
     return this;
   }
 
@@ -110,19 +110,17 @@ export default class PatriciaTrieNode {
 
     const child = this.children.get(word[0]);
 
-    if (child) {
-      if (word.startsWith(child.label)) {
-        const remainingWord = word.slice(child.label.length);
-        const result = child.delete(remainingWord);
+    // Si le préfixe n'existe pas, le mot n'est pas dans le trie
+    if (!child) return this;
 
-        if (result === null) this.children.delete(child.label);
+    // cas où le mot est trouvé
+    const remainingWord = word.slice(child.label.length);
+    const result = child.delete(remainingWord);
 
-        // Si ce noeud n'est plus une fin de mot et n'a pas d'enfants, on peut le supprimer
-        if (!this.is_end_of_word && this.children.size === 0) return null;
+    if (result === null) this.children.delete(child.label);
 
-        return this;
-      }
-    }
+    // Si ce noeud n'est plus une fin de mot et n'a pas d'enfants, on peut le supprimer
+    if (!this.is_end_of_word && this.children.size === 0) return null;
 
     return this;
   }
@@ -177,12 +175,12 @@ export default class PatriciaTrieNode {
   countPrefixes(prefix: string): number {
     if (prefix.length === 0) return this.count();
     const child = this.children.get(prefix[0]);
-    if (child) {
-      if (prefix.startsWith(child.label))
-        return child.countPrefixes(prefix.slice(child.label.length));
-      if (child.label.startsWith(prefix)) return child.count();
-    }
-    return 0;
+
+    if (!child) return 0;
+
+    if (child.label.startsWith(prefix)) return child.count();
+
+    return child.countPrefixes(prefix.slice(child.label.length));
   }
 
   merge(node: PatriciaTrieNode): PatriciaTrieNode {

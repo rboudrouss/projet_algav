@@ -43,7 +43,7 @@ De même, si nous étions dans un langage bas niveau, nous aurions pu utiliser u
 ![Arbre représentant l'exemple de base avec un Patricia Trie](./imgs/exemple_base_patricia_trie.png)
 
 
-## Analyse de la complexité
+## Analyse
 
 ### ComptageMot, ComptageNil, Hauteur, ProfondeurMoyenne et ListeMots
 
@@ -73,9 +73,18 @@ $$ O \left( \sum^{n/m}_{i=1} (1+m) \right) \approx O(n) $$
 
 Dans le meilleur des cas, `prefix` correspond entièrement au label du premier noeud de l'arbre, alors nous faisons appel à `ComptageMot` pour parcourir l'arbre et récupérer les mots. La complexité est en $O(n)$.
 
-Dans le pire des cas, la méthode traverse plusieurs niveaux de l’arbre jusqu’à atteindre un nœud où prefix devient vide ou non trouvé. À chaque niveau :
+Dans le pire des cas, la méthode traverse plusieurs niveaux de l’arbre jusqu’à atteindre un nœud où `prefix` devient vide ou non trouvé. À chaque niveau :
 - La recherche dans `children` est en $O(1)$ en moyenne
 - La comparaison de label (avec `startsWith`) est en $O(m)$ (avec $m$ la longueur moyenne des labels)
 
 La profondeur maximale de l'arbre est $n/m$ (avec $n$ la longueur du mot le plus long et $m$ la longueur moyenne des labels), ce qui nous donne alors en moyennne $n/m$ récursion, et ensuite la methode `ComptageMot` est appelée une fois.
 
+La complexité de l'appel final `ComptageMot` dans le pire des cas est $O(n-k) = O(n)$ où $k$ est les noeuds traversés.
+
+Donc, la complexité totale est :
+
+$$ O(n) + O \left( \sum^{n/m}_{i=1} (1+m) \right) \approx O(n) $$
+
+### Fusion
+
+Dans le pire des cas, la fusion visite tous les noeuds des deux arbres, ce qui donne une complexité en $O(n_1 + n_2)$ où $n_1$ et $n_2$ sont les nombres de noeuds des deux arbres.

@@ -66,3 +66,11 @@ export function randomString(n: number): string {
   }
   return out;
 }
+
+
+// Fonction utilitaire pour trouver la longueur du préfixe commun
+export function findCommonPrefixLength(label1: string, label2: string): number {
+  let i = 0;
+  while (i < label1.length && i < label2.length && label1[i] === label2[i]) i++;
+  return i;
+}

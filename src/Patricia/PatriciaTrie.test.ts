@@ -213,6 +213,18 @@ Deno.test("PatriciaTries should merge correctly", () => {
     trie1.listWords().sort(),
     ["car", "carts", "cat", "dog", "doggy", "doggo"].sort()
   );
+
+  const trie3 = new PatriciaTrie();
+  trie3.insertMany("a", "b", "c", "aa", "ab");
+  const trie4 = new PatriciaTrie();
+  trie4.insertMany("aaaa", "aaab", "aaaaa", "aaabb");
+
+  trie3.merge(trie4);
+
+  assertEquals(
+    trie3.listWords().sort(),
+    ["a", "b", "c", "aa", "ab", "aaaa", "aaab", "aaaaa", "aaabb"].sort()
+  );
 });
 
 Deno.test(

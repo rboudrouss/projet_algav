@@ -1,3 +1,5 @@
+import { findCommonPrefixLength } from "../helpers/index.ts";
+
 /*
  * Ici, on utilise un booléen pour ne pas avoir la contrainte de l'encodage.
  * Aussi, on utilise un Map pour stocker les enfants et on a recours à des méthodes haut niveau pour parcourir les enfants et déterminer si elle est vide.
@@ -51,15 +53,8 @@ export default class PatriciaTrieNode {
     // cas où préfixe commun
 
     const label = child.label;
-    let commonPrefixLength = 0;
-
     // Identifier le préfixe commun
-    while (
-      commonPrefixLength < label.length &&
-      commonPrefixLength < word.length &&
-      label[commonPrefixLength] === word[commonPrefixLength]
-    )
-      commonPrefixLength++;
+    const commonPrefixLength = findCommonPrefixLength(label, word);
 
     // Cas où tout le label de l'enfant correspond
     if (commonPrefixLength === label.length) {
@@ -184,14 +179,60 @@ export default class PatriciaTrieNode {
   }
 
   merge(node: PatriciaTrieNode): PatriciaTrieNode {
+    // Étape 1 : Marquer comme fin de mot si applicable
     if (node.is_end_of_word) this.is_end_of_word = true;
+
+    // Étape 2 : Parcourir les enfants du nœud à fusionner
     for (const [key, child] of node.children) {
-      if (this.children.has(key)) {
-        this.children.get(key)!.merge(child);
-      } else {
+      if (!this.children.has(key)) {
+        // Cas simple : aucun conflit, ajouter directement
         this.children.set(key, child);
+      } else {
+        // Conflit : les deux ont des enfants sous la même clé
+        const existingChild = this.children.get(key)!;
+
+        // Trouver le préfixe commun entre les labels
+        const commonPrefixLength = findCommonPrefixLength(
+          existingChild.label,
+          child.label
+        );
+
+        if (commonPrefixLength === 0) {
+          // Aucun préfixe commun, les labels sont complètement différents
+          this.children.set(key, child);
+        } else if (
+          commonPrefixLength === existingChild.label.length &&
+          commonPrefixLength === child.label.length
+        ) {
+          // Les deux labels sont identiques, fusionner récursivement
+          existingChild.merge(child);
+        } else {
+          // Scinder les labels en fonction du préfixe commun
+          const commonPrefix = existingChild.label.slice(0, commonPrefixLength);
+          const existingSuffix = existingChild.label.slice(commonPrefixLength);
+          const newSuffix = child.label.slice(commonPrefixLength);
+
+          // Créer un nouveau noeud pour le préfixe commun
+          const intermediateNode = new PatriciaTrieNode(commonPrefix);
+
+          // Ajouter l'ancien enfant avec son suffixe
+          existingChild.label = existingSuffix;
+          intermediateNode.children.set(existingSuffix[0], existingChild);
+
+          // Ajouter le nouveau noeud avec son suffixe
+          const newChildNode = new PatriciaTrieNode(
+            newSuffix,
+            child.is_end_of_word
+          );
+          newChildNode.children = child.children;
+          intermediateNode.children.set(newSuffix[0], newChildNode);
+
+          // Remplacer l'enfant original par le noeud intermédiaire
+          this.children.set(commonPrefix[0], intermediateNode);
+        }
       }
     }
+
     return this;
   }
 

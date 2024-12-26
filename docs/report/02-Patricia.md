@@ -45,6 +45,7 @@ De même, si nous étions dans un langage bas niveau, nous aurions pu utiliser u
 
 ## Analyse
 
+
 ### ComptageMot, ComptageNil, Hauteur, ProfondeurMoyenne et ListeMots
 
 Ces opérations procédent de la même manière, elles parcourent l'arbre en profondeur une fois en utilisant une récursion et receuille les informations dont elles ont besoin. 
@@ -56,6 +57,7 @@ NB: Pour la méthode ComptageNil, au vu de notre implémentation les pointeurs n
 
 ### Recherche et Suppression
 
+
 La supression est semblable à la recherche, car le gros du calcul est fait par la recherche du noeud à supprimer.
 
 Il y a 2 variables qui influent sur la complexité de la recherche et de la suppression :
@@ -65,18 +67,20 @@ Il y a 2 variables qui influent sur la complexité de la recherche et de la supp
 
 Pour chaque niveau de récursion, nous devons récupérer l'enfant dans `children` ce qui est en $O(1)$ en moyenne, et comparer le label du noeud avec le mot recherché ce qui est en $O(m)$ (dans le code, cela est représenté par la fonction `startsWith`). 
 
-Le nombre maximal de niveaux de récursion est proportionnel à la longueur de la chaîne $n$, divisée par la longueur moyenne des labels $m$. Cela donne environ $O(n/m)$ appels récursifs.
+Le nombre maximal de niveaux de récursion est proportionnel à la longueur de la chaîne $n$, divisée par la longueur moyenne des labels $m$. Cela donne environ $n/m$ appels récursifs.
 
 Ainsi, la complexité totale est : 
 
 $$ O \left( \sum^{n/m}_{i=1} (1+m) \right) \approx O(n) $$
 
+
 ### Prefixe
 
-Dans le meilleur des cas, `prefix` correspond entièrement au label du premier noeud de l'arbre, alors nous faisons appel à `ComptageMot` pour parcourir l'arbre et récupérer les mots. La complexité est en $O(n)$.
 
-Dans le pire des cas, la méthode traverse plusieurs niveaux de l’arbre jusqu’à atteindre un nœud où `prefix` devient vide ou non trouvé. À chaque niveau :
+La méthode traverse plusieurs niveaux de l’arbre jusqu’à atteindre un nœud où `prefix` devient vide ou non trouvé. À chaque niveau :
+
 - La recherche dans `children` est en $O(1)$ en moyenne
+
 - La comparaison de label (avec `startsWith`) est en $O(m)$ (avec $m$ la longueur moyenne des labels)
 
 La profondeur maximale de l'arbre est $n/m$ (avec $n$ la longueur du mot le plus long et $m$ la longueur moyenne des labels), ce qui nous donne alors en moyennne $n/m$ récursion, et ensuite la methode `ComptageMot` est appelée une fois.
@@ -85,8 +89,47 @@ La complexité de l'appel final `ComptageMot` dans le pire des cas est $O(n-k) =
 
 Donc, la complexité totale est :
 
-$$ O(n) + O \left( \sum^{n/m}_{i=1} (1+m) \right) \approx O(n) $$
+$$ O \left( \sum^{n/m}_{i=1} (1+m) \right) + O(n) \approx O(n) $$
+
 
 ### Fusion
 
-Dans le pire des cas, la fusion visite tous les noeuds des deux arbres, ce qui donne une complexité en $O(n_1 + n_2)$ où $n_1$ et $n_2$ sont les nombres de noeuds des deux arbres.
+
+#### 1. Parcours des enfants
+
+
+Pour chaque noeud du second Patricia-Trie (node), on effectue les opérations suivantes :
+
+- Vérification si la clé existe déjà dans this.children. Cette opération est $O(1)$ grâce à la structure Map.
+
+- Si elle n'existe pas, l'enfant est ajouté directement, ce qui est également $O(1)$.
+
+- Si elle existe, on appelle récursivement merge sur les sous-arbres correspondants.
+
+
+#### 2. Gestion des préfixes communs
+
+
+En cas de conflit (préfixes communs), on :
+
+- Calcule la longueur du préfixe commun. Cette opération est proportionnelle à la longueur du label, soit $O(m)$.
+
+- Réorganise les labels et les sous-arbres, ce qui implique de modifier ou de créer de nouveaux nœuds. Ces opérations sont constantes par nœud, soit $O(1)$.
+
+
+#### 3. Récursion
+
+
+La fonction est appelée récursivement pour chaque enfant. Le nombre total d'appels récursifs est proportionnel au nombre total de noeuds $n_2$ dans le second Patricia-Trie.
+
+#### 4. Conclusion
+
+
+Chaque enfant dans node est traité en $O(m)$ dans le pire cas, en tenant compte de la vérification et du traitement des préfixes communs. La fonction est appelée récursivement pour tous les enfants, donc pour $n_2$ noeuds au total. On a donc :
+
+$$ O \left( n_2 \times m \right) $$
+
+Dans le pire cas où tous les labels ont des longueurs similaires, mm est une constante, et la complexité devient linéaire en fonction du nombre de noeuds dans le second Patricia-Trie :
+
+$$ O(n_2) $$
+

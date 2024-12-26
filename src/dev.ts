@@ -5,6 +5,7 @@
 
 import { PatriciaTrie } from "./Patricia/index.ts";
 import { HybridTrie } from "./Hybrid/index.ts";
+import { replacer } from "./helpers/index.ts";
 
 let mots =
   `uwu awa ewe owo duwu o jdiao ioazd isnia iusui jisiu siusiu uisius iusiu sius iu siu suisuh`
@@ -16,15 +17,8 @@ let mots =
 console.log("Hybrid Trie");
 
 const trie = new HybridTrie();
-trie.insert("car").insert("carts").insert("cat").insert("dog");
-console.log(trie);
-
-console.log(trie.search(""), false);
-console.log(trie.search("c"), false);
-console.log(trie.search("ca"), false);
-console.log(trie.search("car"), true);
-console.log(trie.search("carts"), true);
-console.log(trie.search("cart"), false);
-console.log(trie.search("cat"), true);
-console.log(trie.search("dog"), true);
-console.log(trie.search("doggy"), false);
+// trie.insertMany("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k");
+// trie.insertMany("aa", "ab", "ac", "ad", "ae", "af", "ag", "ah", "ai", "aj", "ak");
+trie.insertMany("car");
+console.log(JSON.stringify(trie, replacer, 2));
+console.log(trie.listWords().sort());

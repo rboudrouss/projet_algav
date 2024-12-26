@@ -38,6 +38,14 @@ export default class HybridTrie {
     return this.root?.count() ?? 0;
   }
 
+  insertMany(...words: (string | string[])[]): HybridTrie {
+    words.forEach((word) => {
+      if (Array.isArray(word)) this.insertMany(...word);
+      else this.insert(word);
+    });
+    return this;
+  }
+
   // Lister les mots
   listWords(): string[] {
     return this.root?.listWords() ?? [];

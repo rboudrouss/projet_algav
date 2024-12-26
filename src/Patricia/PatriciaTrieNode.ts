@@ -117,7 +117,7 @@ export default class PatriciaTrieNode {
     const remainingWord = word.slice(child.label.length);
     const result = child.delete(remainingWord);
 
-    if (result === null) this.children.delete(child.label);
+    if (result === null) this.children.delete(child.label[0]);
 
     // Si ce noeud n'est plus une fin de mot et n'a pas d'enfants, on peut le supprimer
     if (!this.is_end_of_word && this.children.size === 0) return null;

@@ -92,3 +92,13 @@ où $n_\text{sous_arbre}$ est le nombre de noeuds du sous-arbre qui contient les
 
 ### Equilibrage
 
+Au début du fichier `src/HybridTrie/HybridTrieNode.ts` nous pouvons trouver constante `BALANCE` qui si elle est définie à `true` permet d'équilibrer l'arbre à chaque insertion. Cela permet de réduire la hauteur de l'arbre et donc de réduire la complexité des opérations de recherche, de suppression et de prefixe.
+
+L'équilibrage est fait en utilisant la méthode `balance` qui est appellé pour chaque noeud où l'algorithme d'insertion est passée et elle procéde comme suit :
+
+- On calcule le facteur d'équilibre du noeud courant (la différence de hauteur entre le sous-arbre gauche et le sous-arbre droit)
+- Si le facteur d'équilibre est supérieur à 1, on fait une rotation droite
+- Si le facteur d'équilibre est inférieur à -1, on fait une rotation gauche
+
+À noter que notre méthode d'équilibrage peut être améliorée en stockant la hauteur de chaque noeud pour éviter de recalculer la hauteur à chaque appel de la méthode `height`. Cela permettrait de réduire énormément le temps de calcul de l'équilibrage.
+

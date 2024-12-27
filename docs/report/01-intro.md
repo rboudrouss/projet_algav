@@ -24,3 +24,28 @@ Nous avons choisi d'utiliser **Typescript** car il permet de définir des types 
 
 `deno run bench` permet de lancer les benchmarks. Les benchmarks sont reconnaissable par leur extension sous la forme `.bench.ts`. Il y en a un pour chaque trie dans le dossier correspondant.
 
+<!> Exécutez les commandes au root du projet. soit le **parent** de /src (là où se trouve les fichiers de configuration de Deno et le README.Md).
+
+## Arborecense
+
+- `src/` contient le code source du projet
+- `src/cli.ts` contient le code de l'interface en ligne de commande
+- `src/dev.ts` contient un playground pour tester les tries (executable avec `deno run dev`)
+- `src/HybridTrie/` contient le code du Trie Hybride (incluant les tests et les benchmarks)
+- `src/PatriciaTrie/` contient le code du Patricia Trie (incluant les tests et les benchmarks)
+- `src/helpers/` contient des fonctions utilitaires
+
+- `docs/` contient le code source du rapport
+- `docs/diapos/` contient les fichiers sources des diapositives
+- `docs/report/` contient les fichiers sources du rapport
+- `docs/scripts/` contient les scripts pour générer les images du rapport
+
+- `Shakespeare/` contient les texts de Shakespeare (fournis par l'énoncé et utilisés pour les tests et les benchmarks)
+
+Au root du projet, on trouve aussi :
+- `deno.json` et `deno.lock` les fichiers de configuration de Deno
+- `README.md` 
+- `rapport.pdf` le rapport généré (que vous êtes en train de lire)
+- `diapos.pdf` les diapositives générées
+
+Tous les fichiers générés et lu par le cli doivent être dans le root du projet. (pour les fichiers lu le chemain doit être relatif au root du projet).

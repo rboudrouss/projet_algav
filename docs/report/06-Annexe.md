@@ -1,6 +1,6 @@
 
 
-# 6. Annexe
+# 5. Annexe
 
 
 ## PatriciaTrie
@@ -56,4 +56,9 @@
 
 ## Comparaison
 
-<!-- TODO  -->
+
+![Comparaison des Insertions](./imgs/comparaison_insertion.png)
+
+
+![Comparaison des Recherches](./imgs/comparaison_search.png)
+

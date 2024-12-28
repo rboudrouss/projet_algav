@@ -1,0 +1,3351 @@
+{
+  "version": 1,
+  "runtime": "Deno/2.1.1 x86_64-unknown-linux-gnu",
+  "cpu": "Intel(R) Core(TM) i5-4670K CPU @ 3.40GHz",
+  "benches": [
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple insertion",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 153,
+            "min": 322.0093,
+            "max": 495.9363,
+            "avg": 349.65309673202614,
+            "p75": 360.5099,
+            "p99": 392.3862,
+            "p995": 495.9363,
+            "p999": 495.9363,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie insertion of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 30913,
+            "min": 14311.0,
+            "max": 299137.0,
+            "avg": 16180.0,
+            "p75": 15816.0,
+            "p99": 33284.0,
+            "p995": 36982.0,
+            "p999": 157153.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie insertion of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 5228,
+            "min": 87456.0,
+            "max": 393483.0,
+            "avg": 95858.0,
+            "p75": 95619.0,
+            "p99": 173849.0,
+            "p995": 252889.0,
+            "p999": 322533.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie insertion of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 2551,
+            "min": 185088.0,
+            "max": 654190.0,
+            "avg": 196804.0,
+            "p75": 193069.0,
+            "p99": 364047.0,
+            "p995": 395999.0,
+            "p999": 498258.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie insertion of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 497,
+            "min": 972293.0,
+            "max": 1616052.0,
+            "avg": 1028457.0,
+            "p75": 1046335.0,
+            "p99": 1382943.0,
+            "p995": 1390796.0,
+            "p999": 1616052.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie insertion of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 231,
+            "min": 2127759.0,
+            "max": 2888095.0,
+            "avg": 2268091.0,
+            "p75": 2309326.0,
+            "p99": 2806934.0,
+            "p995": 2854487.0,
+            "p999": 2888095.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie insertion of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 126,
+            "min": 4112249.0,
+            "max": 5840874.0,
+            "avg": 4351386.0,
+            "p75": 4452453.0,
+            "p99": 4894873.0,
+            "p995": 5840874.0,
+            "p999": 5840874.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie insertion of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 79,
+            "min": 6788259.0,
+            "max": 8778995.0,
+            "avg": 7282065.0,
+            "p75": 7528985.0,
+            "p99": 8778995.0,
+            "p995": 8778995.0,
+            "p999": 8778995.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple positive search",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1398,
+            "min": 33.0402,
+            "max": 64.1204,
+            "avg": 36.02979055793991,
+            "p75": 36.5694,
+            "p99": 51.3671,
+            "p995": 56.8194,
+            "p999": 62.0466,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple negative search",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 858,
+            "min": 55.7431,
+            "max": 100.6588,
+            "avg": 59.00106794871787,
+            "p75": 60.5119,
+            "p99": 77.8464,
+            "p995": 82.1767,
+            "p999": 100.6588,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie positive search in trie of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 328,
+            "min": 148.8109,
+            "max": 194.6442,
+            "avg": 157.60107743902446,
+            "p75": 163.4964,
+            "p99": 183.6776,
+            "p995": 188.2047,
+            "p999": 194.6442,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie positive search in trie of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 296,
+            "min": 165.504,
+            "max": 214.1402,
+            "avg": 174.94545641891884,
+            "p75": 179.425,
+            "p99": 208.5884,
+            "p995": 208.5929,
+            "p999": 214.1402,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie positive search in trie of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 282,
+            "min": 174.0197,
+            "max": 281.1401,
+            "avg": 184.17842978723388,
+            "p75": 189.618,
+            "p99": 213.1954,
+            "p995": 241.1077,
+            "p999": 281.1401,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie positive search in trie of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 250,
+            "min": 197.5473,
+            "max": 246.8444,
+            "avg": 208.595814,
+            "p75": 213.6745,
+            "p99": 242.6475,
+            "p995": 246.7675,
+            "p999": 246.8444,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie positive search in trie of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 228,
+            "min": 215.1275,
+            "max": 288.1496,
+            "avg": 230.21511315789462,
+            "p75": 234.0142,
+            "p99": 283.1249,
+            "p995": 284.6913,
+            "p999": 288.1496,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie positive search in trie of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 234,
+            "min": 210.8425,
+            "max": 293.7232,
+            "avg": 223.15629786324786,
+            "p75": 229.0248,
+            "p99": 272.3421,
+            "p995": 274.4048,
+            "p999": 293.7232,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie positive search in trie of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 229,
+            "min": 215.1279,
+            "max": 344.9456,
+            "avg": 228.65855938864627,
+            "p75": 234.1913,
+            "p99": 293.4245,
+            "p995": 297.8137,
+            "p999": 344.9456,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie (generally negative) search in trie of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 175,
+            "min": 284.6902,
+            "max": 363.337,
+            "avg": 304.49321828571436,
+            "p75": 312.4922,
+            "p99": 345.1104,
+            "p995": 363.337,
+            "p999": 363.337,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie (generally negative) search in trie of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 164,
+            "min": 306.1035,
+            "max": 366.3948,
+            "avg": 325.81798292682925,
+            "p75": 331.8269,
+            "p99": 364.9669,
+            "p995": 366.3948,
+            "p999": 366.3948,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie (generally negative) search in trie of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 148,
+            "min": 341.7203,
+            "max": 416.0758,
+            "avg": 364.144697972973,
+            "p75": 373.0231,
+            "p99": 406.5224,
+            "p995": 416.0758,
+            "p999": 416.0758,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie (generally negative) search in trie of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 152,
+            "min": 332.4298,
+            "max": 408.78,
+            "avg": 353.09899473684226,
+            "p75": 363.4699,
+            "p99": 407.2338,
+            "p995": 408.78,
+            "p999": 408.78,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie (generally negative) search in trie of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 134,
+            "min": 382.6343,
+            "max": 453.691,
+            "avg": 405.65645522388064,
+            "p75": 414.3854,
+            "p99": 444.1978,
+            "p995": 453.691,
+            "p999": 453.691,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie (generally negative) search in trie of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 138,
+            "min": 370.6138,
+            "max": 454.0663,
+            "avg": 393.17828043478255,
+            "p75": 402.0605,
+            "p99": 448.8337,
+            "p995": 454.0663,
+            "p999": 454.0663,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie (generally negative) search in trie of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 136,
+            "min": 377.4755,
+            "max": 462.4342,
+            "avg": 398.8434147058824,
+            "p75": 405.6146,
+            "p99": 445.0197,
+            "p995": 462.4342,
+            "p999": 462.4342,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple deletion",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 135,
+            "min": 374.8398,
+            "max": 443.916,
+            "avg": 402.2748007407408,
+            "p75": 410.0416,
+            "p99": 432.697,
+            "p995": 443.916,
+            "p999": 443.916,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie deletion it trie of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 30153,
+            "min": 95.0,
+            "max": 143407.0,
+            "avg": 327.0,
+            "p75": 362.0,
+            "p99": 565.0,
+            "p995": 684.0,
+            "p999": 1586.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie deletion in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 5217,
+            "min": 183.0,
+            "max": 15455.0,
+            "avg": 426.0,
+            "p75": 468.0,
+            "p99": 1272.0,
+            "p995": 1577.0,
+            "p999": 9387.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie deletion in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 2510,
+            "min": 165.0,
+            "max": 10784.0,
+            "avg": 522.0,
+            "p75": 569.0,
+            "p99": 1591.0,
+            "p995": 2132.0,
+            "p999": 9686.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie deletion in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 484,
+            "min": 459.0,
+            "max": 10405.0,
+            "avg": 986.0,
+            "p75": 1007.0,
+            "p99": 3347.0,
+            "p995": 3426.0,
+            "p999": 10405.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie deletion in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 229,
+            "min": 527.0,
+            "max": 12832.0,
+            "avg": 1482.0,
+            "p75": 1426.0,
+            "p99": 4172.0,
+            "p995": 8322.0,
+            "p999": 12832.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie deletion in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 126,
+            "min": 850.0,
+            "max": 6401.0,
+            "avg": 1960.0,
+            "p75": 2422.0,
+            "p99": 4533.0,
+            "p995": 6401.0,
+            "p999": 6401.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie deletion in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 80,
+            "min": 1298.0,
+            "max": 8191.0,
+            "avg": 3191.0,
+            "p75": 4600.0,
+            "p99": 8191.0,
+            "p995": 8191.0,
+            "p999": 8191.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple list words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 178,
+            "min": 274.7435,
+            "max": 372.3719,
+            "avg": 298.73045168539323,
+            "p75": 304.7591,
+            "p99": 341.2648,
+            "p995": 372.3719,
+            "p999": 372.3719,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie list words in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 31351,
+            "min": 12792.0,
+            "max": 372159.0,
+            "avg": 15960.0,
+            "p75": 15108.0,
+            "p99": 37261.0,
+            "p995": 128609.0,
+            "p999": 190660.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie list words in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 9038,
+            "min": 44099.0,
+            "max": 1153465.0,
+            "avg": 55378.0,
+            "p75": 53069.0,
+            "p99": 214150.0,
+            "p995": 235464.0,
+            "p999": 268729.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie list words in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 5121,
+            "min": 78818.0,
+            "max": 1171119.0,
+            "avg": 97819.0,
+            "p75": 94818.0,
+            "p99": 275893.0,
+            "p995": 290601.0,
+            "p999": 338227.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie list words in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1666,
+            "min": 253949.0,
+            "max": 638021.0,
+            "avg": 301890.0,
+            "p75": 303771.0,
+            "p99": 546560.0,
+            "p995": 569387.0,
+            "p999": 610226.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie list words in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1000,
+            "min": 416720.0,
+            "max": 891291.0,
+            "avg": 505042.0,
+            "p75": 541191.0,
+            "p99": 793723.0,
+            "p995": 804649.0,
+            "p999": 891291.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie list words in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 667,
+            "min": 623715.0,
+            "max": 1693421.0,
+            "avg": 760740.0,
+            "p75": 845875.0,
+            "p99": 1259460.0,
+            "p995": 1309023.0,
+            "p999": 1693421.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie list words in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 447,
+            "min": 851785.0,
+            "max": 1948976.0,
+            "avg": 1150691.0,
+            "p75": 1271753.0,
+            "p99": 1711312.0,
+            "p995": 1714482.0,
+            "p999": 1948976.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple count words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 958,
+            "min": 48.2225,
+            "max": 83.1591,
+            "avg": 52.775944780793296,
+            "p75": 54.5666,
+            "p99": 70.3188,
+            "p995": 76.4776,
+            "p999": 83.1591,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie count words in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 31,
+            "min": 2266.0783,
+            "max": 2506.9293,
+            "avg": 2375.0859935483877,
+            "p75": 2424.6642,
+            "p99": 2506.9293,
+            "p995": 2506.9293,
+            "p999": 2506.9293,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie count words in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 17,
+            "min": 7160.1833,
+            "max": 7607.0782,
+            "avg": 7339.253847058825,
+            "p75": 7414.7168,
+            "p99": 7607.0782,
+            "p995": 7607.0782,
+            "p999": 7607.0782,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie count words in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 39717,
+            "min": 11229.0,
+            "max": 231360.0,
+            "avg": 12593.0,
+            "p75": 12699.0,
+            "p99": 22094.0,
+            "p995": 29006.0,
+            "p999": 67532.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie count words in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 8967,
+            "min": 49578.0,
+            "max": 277821.0,
+            "avg": 55820.0,
+            "p75": 56269.0,
+            "p99": 92215.0,
+            "p995": 112840.0,
+            "p999": 149251.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie count words in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 5085,
+            "min": 89244.0,
+            "max": 322650.0,
+            "avg": 98536.0,
+            "p75": 100784.0,
+            "p99": 158559.0,
+            "p995": 184938.0,
+            "p999": 244712.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie count words in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 3405,
+            "min": 135105.0,
+            "max": 421632.0,
+            "avg": 147287.0,
+            "p75": 152519.0,
+            "p99": 215935.0,
+            "p995": 244332.0,
+            "p999": 283231.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie count words in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 2532,
+            "min": 179531.0,
+            "max": 475206.0,
+            "avg": 198345.0,
+            "p75": 205230.0,
+            "p99": 269016.0,
+            "p995": 290489.0,
+            "p999": 378975.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple height",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 978,
+            "min": 47.4855,
+            "max": 73.0151,
+            "avg": 51.66366380368096,
+            "p75": 54.0705,
+            "p99": 65.0292,
+            "p995": 68.1509,
+            "p999": 73.0151,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie height in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 32,
+            "min": 2333.617,
+            "max": 2480.2597,
+            "avg": 2369.871365625,
+            "p75": 2371.2194,
+            "p99": 2480.2597,
+            "p995": 2480.2597,
+            "p999": 2480.2597,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie height in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 17,
+            "min": 7228.2714,
+            "max": 7599.0967,
+            "avg": 7384.814958823528,
+            "p75": 7482.6623,
+            "p99": 7599.0967,
+            "p995": 7599.0967,
+            "p999": 7599.0967,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie height in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 40343,
+            "min": 11699.0,
+            "max": 85833.0,
+            "avg": 12397.0,
+            "p75": 12116.0,
+            "p99": 21533.0,
+            "p995": 22292.0,
+            "p999": 48328.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie height in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 9613,
+            "min": 48910.0,
+            "max": 142585.0,
+            "avg": 52070.0,
+            "p75": 51250.0,
+            "p99": 82460.0,
+            "p995": 88674.0,
+            "p999": 115745.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie height in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 5356,
+            "min": 89361.0,
+            "max": 190688.0,
+            "avg": 93538.0,
+            "p75": 91079.0,
+            "p99": 129536.0,
+            "p995": 141349.0,
+            "p999": 157072.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie height in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 3544,
+            "min": 136503.0,
+            "max": 211015.0,
+            "avg": 141497.0,
+            "p75": 138842.0,
+            "p99": 177620.0,
+            "p995": 186814.0,
+            "p999": 202593.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie height in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 2710,
+            "min": 179275.0,
+            "max": 495752.0,
+            "avg": 185196.0,
+            "p75": 180882.0,
+            "p99": 232225.0,
+            "p995": 242355.0,
+            "p999": 292663.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple average depth",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 674,
+            "min": 71.7614,
+            "max": 102.8484,
+            "avg": 75.31326676557865,
+            "p75": 77.4406,
+            "p99": 94.6436,
+            "p995": 96.8674,
+            "p999": 102.8484,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie average depth in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 24,
+            "min": 3682.8176,
+            "max": 3819.7967,
+            "avg": 3712.118529166668,
+            "p75": 3715.2414,
+            "p99": 3819.7967,
+            "p995": 3819.7967,
+            "p999": 3819.7967,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie average depth in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 43332,
+            "min": 10836.0,
+            "max": 272101.0,
+            "avg": 11542.0,
+            "p75": 11043.0,
+            "p99": 20377.0,
+            "p995": 21516.0,
+            "p999": 143503.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie average depth in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 24689,
+            "min": 18804.0,
+            "max": 253081.0,
+            "avg": 20260.0,
+            "p75": 19637.0,
+            "p99": 33589.0,
+            "p995": 49345.0,
+            "p999": 181676.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie average depth in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 7267,
+            "min": 64872.0,
+            "max": 328317.0,
+            "avg": 68901.0,
+            "p75": 66723.0,
+            "p99": 125946.0,
+            "p995": 202967.0,
+            "p999": 264019.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie average depth in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 4492,
+            "min": 106060.0,
+            "max": 331382.0,
+            "avg": 111551.0,
+            "p75": 108186.0,
+            "p99": 183877.0,
+            "p995": 249785.0,
+            "p999": 299399.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie average depth in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 3040,
+            "min": 156558.0,
+            "max": 388292.0,
+            "avg": 165012.0,
+            "p75": 159829.0,
+            "p99": 297797.0,
+            "p995": 324396.0,
+            "p999": 356149.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie average depth in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 2316,
+            "min": 206422.0,
+            "max": 441941.0,
+            "avg": 216853.0,
+            "p75": 209617.0,
+            "p99": 372400.0,
+            "p995": 390379.0,
+            "p999": 409324.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie simple prefixes count",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1410,
+            "min": 34.4149,
+            "max": 47.9836,
+            "avg": 35.71190460992904,
+            "p75": 35.3522,
+            "p99": 41.5329,
+            "p995": 42.5665,
+            "p999": 44.2178,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie prefixes count in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 162,
+            "min": 316.991,
+            "max": 356.4545,
+            "avg": 329.32440246913563,
+            "p75": 334.7618,
+            "p99": 355.4568,
+            "p995": 356.4545,
+            "p999": 356.4545,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie prefixes count in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 137,
+            "min": 381.9842,
+            "max": 422.6893,
+            "avg": 394.52877810218996,
+            "p75": 400.9613,
+            "p99": 420.309,
+            "p995": 422.6893,
+            "p999": 422.6893,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie prefixes count in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 111,
+            "min": 479.9376,
+            "max": 548.0901,
+            "avg": 499.50414684684677,
+            "p75": 504.7414,
+            "p99": 543.7979,
+            "p995": 548.0901,
+            "p999": 548.0901,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie prefixes count in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 53,
+            "min": 1149.645,
+            "max": 1297.3038,
+            "avg": 1185.9222603773587,
+            "p75": 1189.8075,
+            "p99": 1297.3038,
+            "p995": 1297.3038,
+            "p999": 1297.3038,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie prefixes count in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 29,
+            "min": 2639.346,
+            "max": 2880.2775,
+            "avg": 2708.254751724138,
+            "p75": 2705.5165,
+            "p99": 2880.2775,
+            "p995": 2880.2775,
+            "p999": 2880.2775,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie prefixes count in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 26,
+            "min": 3149.2302,
+            "max": 3383.2751,
+            "avg": 3218.2803730769224,
+            "p75": 3248.3296,
+            "p99": 3383.2751,
+            "p995": 3383.2751,
+            "p999": 3383.2751,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Hybrid/HybridTrie.bench.ts",
+      "group": null,
+      "name": "HybridTrie prefixes count in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 23,
+            "min": 4023.607,
+            "max": 4188.7637,
+            "avg": 4080.5386086956532,
+            "p75": 4098.3852,
+            "p99": 4188.7637,
+            "p995": 4188.7637,
+            "p999": 4188.7637,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple insertion",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 103,
+            "min": 524.1686,
+            "max": 591.0669,
+            "avg": 542.9320601941746,
+            "p75": 549.336,
+            "p99": 580.0669,
+            "p995": 591.0669,
+            "p999": 591.0669,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie insertion of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 32190,
+            "min": 13627.0,
+            "max": 218855.0,
+            "avg": 15539.0,
+            "p75": 15410.0,
+            "p99": 25636.0,
+            "p995": 84812.0,
+            "p999": 134384.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie insertion of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 4805,
+            "min": 95822.0,
+            "max": 347600.0,
+            "avg": 104277.0,
+            "p75": 100643.0,
+            "p99": 239092.0,
+            "p995": 252207.0,
+            "p999": 299002.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie insertion of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 2179,
+            "min": 212080.0,
+            "max": 767166.0,
+            "avg": 230512.0,
+            "p75": 229211.0,
+            "p99": 398068.0,
+            "p995": 426798.0,
+            "p999": 458981.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie insertion of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 417,
+            "min": 1160852.0,
+            "max": 1786750.0,
+            "avg": 1232006.0,
+            "p75": 1247546.0,
+            "p99": 1663377.0,
+            "p995": 1670064.0,
+            "p999": 1786750.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie insertion of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 201,
+            "min": 2463898.0,
+            "max": 3075930.0,
+            "avg": 2618344.0,
+            "p75": 2654738.0,
+            "p99": 3059243.0,
+            "p995": 3075581.0,
+            "p999": 3075930.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie insertion of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 103,
+            "min": 5080355.0,
+            "max": 6842226.0,
+            "avg": 5385982.0,
+            "p75": 5521596.0,
+            "p99": 5992883.0,
+            "p995": 6842226.0,
+            "p999": 6842226.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie insertion of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 67,
+            "min": 8508613.0,
+            "max": 9674706.0,
+            "avg": 8902204.0,
+            "p75": 9201579.0,
+            "p99": 9674706.0,
+            "p995": 9674706.0,
+            "p999": 9674706.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple positive search",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 869,
+            "min": 51.7078,
+            "max": 76.5004,
+            "avg": 58.2318833141542,
+            "p75": 57.3919,
+            "p99": 65.948,
+            "p995": 68.0911,
+            "p999": 76.5004,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple negative search",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1296,
+            "min": 37.0329,
+            "max": 61.4767,
+            "avg": 38.88150794753081,
+            "p75": 38.3899,
+            "p99": 54.562,
+            "p995": 55.9472,
+            "p999": 60.9295,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie positive search in trie of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 457,
+            "min": 107.6515,
+            "max": 136.083,
+            "avg": 112.03976914660818,
+            "p75": 113.3101,
+            "p99": 132.0659,
+            "p995": 134.6439,
+            "p999": 136.083,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie positive search in trie of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 383,
+            "min": 128.8759,
+            "max": 159.6952,
+            "avg": 134.04846736292433,
+            "p75": 136.0925,
+            "p99": 152.2333,
+            "p995": 153.97,
+            "p999": 159.6952,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie positive search in trie of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 342,
+            "min": 144.7312,
+            "max": 176.7161,
+            "avg": 150.9785871345029,
+            "p75": 153.6191,
+            "p99": 175.0687,
+            "p995": 175.717,
+            "p999": 176.7161,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie positive search in trie of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 285,
+            "min": 175.3165,
+            "max": 206.5654,
+            "avg": 181.88965754385953,
+            "p75": 185.2255,
+            "p99": 204.0201,
+            "p995": 204.89,
+            "p999": 206.5654,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie positive search in trie of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 261,
+            "min": 192.4036,
+            "max": 288.1212,
+            "avg": 201.90936130268216,
+            "p75": 204.9195,
+            "p99": 271.9155,
+            "p995": 283.1978,
+            "p999": 288.1212,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie positive search in trie of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 187,
+            "min": 204.263,
+            "max": 445.1886,
+            "avg": 286.69969144385027,
+            "p75": 329.3433,
+            "p99": 439.2749,
+            "p995": 445.1886,
+            "p999": 445.1886,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie positive search in trie of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 180,
+            "min": 209.5452,
+            "max": 438.9757,
+            "avg": 293.31973722222216,
+            "p75": 334.5866,
+            "p99": 417.6692,
+            "p995": 438.9757,
+            "p999": 438.9757,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie (generally negative) search in trie of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 319,
+            "min": 144.214,
+            "max": 191.7947,
+            "avg": 162.24107868338552,
+            "p75": 170.1503,
+            "p99": 188.8259,
+            "p995": 191.3719,
+            "p999": 191.7947,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie (generally negative) search in trie of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 306,
+            "min": 154.818,
+            "max": 208.0467,
+            "avg": 169.00656993464057,
+            "p75": 175.5406,
+            "p99": 200.2319,
+            "p995": 204.818,
+            "p999": 208.0467,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie (generally negative) search in trie of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 311,
+            "min": 156.1843,
+            "max": 198.7309,
+            "avg": 166.12894180064293,
+            "p75": 172.3152,
+            "p99": 190.1603,
+            "p995": 192.267,
+            "p999": 198.7309,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie (generally negative) search in trie of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 285,
+            "min": 166.1669,
+            "max": 217.6684,
+            "avg": 182.06507052631576,
+            "p75": 190.197,
+            "p99": 215.3768,
+            "p995": 215.7511,
+            "p999": 217.6684,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie (generally negative) search in trie of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 293,
+            "min": 164.7595,
+            "max": 213.8283,
+            "avg": 176.9100119453923,
+            "p75": 182.4857,
+            "p99": 205.8076,
+            "p995": 209.1259,
+            "p999": 213.8283,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie (generally negative) search in trie of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 289,
+            "min": 168.8169,
+            "max": 202.1954,
+            "avg": 179.5328955017301,
+            "p75": 185.476,
+            "p99": 201.4527,
+            "p995": 201.9687,
+            "p999": 202.1954,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie (generally negative) search in trie of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 295,
+            "min": 165.4235,
+            "max": 201.9124,
+            "avg": 175.67688813559326,
+            "p75": 181.8944,
+            "p99": 200.9504,
+            "p995": 201.5435,
+            "p999": 201.9124,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple deletion",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 91,
+            "min": 601.3799,
+            "max": 685.4409,
+            "avg": 620.3443428571431,
+            "p75": 624.8711,
+            "p99": 685.4409,
+            "p995": 685.4409,
+            "p999": 685.4409,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie deletion it trie of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 28984,
+            "min": 107.0,
+            "max": 25504.0,
+            "avg": 229.0,
+            "p75": 243.0,
+            "p99": 464.0,
+            "p995": 626.0,
+            "p999": 1006.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie deletion in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 4821,
+            "min": 146.0,
+            "max": 10937.0,
+            "avg": 339.0,
+            "p75": 346.0,
+            "p99": 1061.0,
+            "p995": 1250.0,
+            "p999": 5291.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie deletion in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 2176,
+            "min": 159.0,
+            "max": 10234.0,
+            "avg": 457.0,
+            "p75": 518.0,
+            "p99": 1582.0,
+            "p995": 2245.0,
+            "p999": 2901.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie deletion in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 415,
+            "min": 413.0,
+            "max": 12013.0,
+            "avg": 965.0,
+            "p75": 923.0,
+            "p99": 3250.0,
+            "p995": 3347.0,
+            "p999": 12013.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie deletion in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 202,
+            "min": 715.0,
+            "max": 6103.0,
+            "avg": 1542.0,
+            "p75": 1510.0,
+            "p99": 4304.0,
+            "p995": 4578.0,
+            "p999": 6103.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie deletion in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 91,
+            "min": 1525.0,
+            "max": 13063.0,
+            "avg": 4257.0,
+            "p75": 5351.0,
+            "p99": 13063.0,
+            "p995": 13063.0,
+            "p999": 13063.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie deletion in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 64,
+            "min": 2027.0,
+            "max": 17623.0,
+            "avg": 4388.0,
+            "p75": 4968.0,
+            "p99": 17623.0,
+            "p995": 17623.0,
+            "p999": 17623.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple list words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 249,
+            "min": 201.1523,
+            "max": 248.4265,
+            "avg": 210.03762289156634,
+            "p75": 215.3302,
+            "p99": 237.285,
+            "p995": 239.0627,
+            "p999": 248.4265,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie list words in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 18,
+            "min": 6269.3407,
+            "max": 6685.3745,
+            "avg": 6439.064277777778,
+            "p75": 6666.4672,
+            "p99": 6685.3745,
+            "p995": 6685.3745,
+            "p999": 6685.3745,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie list words in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 20942,
+            "min": 20553.0,
+            "max": 255440.0,
+            "avg": 23887.0,
+            "p75": 22615.0,
+            "p99": 61386.0,
+            "p995": 149191.0,
+            "p999": 169695.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie list words in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 11436,
+            "min": 38363.0,
+            "max": 279589.0,
+            "avg": 43762.0,
+            "p75": 41304.0,
+            "p99": 170199.0,
+            "p995": 175937.0,
+            "p999": 196149.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie list words in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 3414,
+            "min": 130734.0,
+            "max": 382181.0,
+            "avg": 146908.0,
+            "p75": 137503.0,
+            "p99": 323066.0,
+            "p995": 336941.0,
+            "p999": 362701.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie list words in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1914,
+            "min": 233185.0,
+            "max": 523626.0,
+            "avg": 262597.0,
+            "p75": 260054.0,
+            "p99": 482222.0,
+            "p995": 502905.0,
+            "p999": 519188.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie list words in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1228,
+            "min": 355925.0,
+            "max": 767050.0,
+            "avg": 410615.0,
+            "p75": 412406.0,
+            "p99": 679505.0,
+            "p995": 696975.0,
+            "p999": 752768.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie list words in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 783,
+            "min": 509566.0,
+            "max": 1367558.0,
+            "avg": 648445.0,
+            "p75": 749428.0,
+            "p99": 1199899.0,
+            "p995": 1288773.0,
+            "p999": 1367558.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple count words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1042,
+            "min": 46.695,
+            "max": 187.2658,
+            "avg": 48.55508147792709,
+            "p75": 48.8503,
+            "p99": 58.5001,
+            "p995": 69.949,
+            "p999": 166.0851,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie count words in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 54,
+            "min": 1110.7488,
+            "max": 1196.0322,
+            "avg": 1142.7950777777774,
+            "p75": 1159.6586,
+            "p99": 1196.0322,
+            "p995": 1196.0322,
+            "p999": 1196.0322,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie count words in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 22,
+            "min": 4258.7302,
+            "max": 4470.1294,
+            "avg": 4289.7215409090895,
+            "p75": 4298.9273,
+            "p99": 4470.1294,
+            "p995": 4470.1294,
+            "p999": 4470.1294,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie count words in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 17,
+            "min": 7556.2672,
+            "max": 7635.217,
+            "avg": 7580.0524352941175,
+            "p75": 7581.6783,
+            "p99": 7635.217,
+            "p995": 7635.217,
+            "p999": 7635.217,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie count words in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 16405,
+            "min": 29012.0,
+            "max": 128710.0,
+            "avg": 30497.0,
+            "p75": 30168.0,
+            "p99": 41354.0,
+            "p995": 48942.0,
+            "p999": 59108.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie count words in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 7434,
+            "min": 62062.0,
+            "max": 133219.0,
+            "avg": 67354.0,
+            "p75": 68376.0,
+            "p99": 96088.0,
+            "p995": 102523.0,
+            "p999": 112491.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie count words in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 5071,
+            "min": 91409.0,
+            "max": 171585.0,
+            "avg": 98801.0,
+            "p75": 103016.0,
+            "p99": 144884.0,
+            "p995": 152000.0,
+            "p999": 165325.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie count words in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 3523,
+            "min": 138220.0,
+            "max": 262506.0,
+            "avg": 142332.0,
+            "p75": 139729.0,
+            "p99": 178436.0,
+            "p995": 182451.0,
+            "p999": 199586.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple height",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 925,
+            "min": 52.7618,
+            "max": 76.8429,
+            "avg": 54.6496828108108,
+            "p75": 55.4894,
+            "p99": 67.8183,
+            "p995": 71.2307,
+            "p999": 76.8429,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie height in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 49,
+            "min": 1286.0238,
+            "max": 1364.9813,
+            "avg": 1302.699516326531,
+            "p75": 1308.0853,
+            "p99": 1364.9813,
+            "p995": 1364.9813,
+            "p999": 1364.9813,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie height in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 21,
+            "min": 4819.8116,
+            "max": 5054.4547,
+            "avg": 4924.974709523808,
+            "p75": 5000.9544,
+            "p99": 5054.4547,
+            "p995": 5054.4547,
+            "p999": 5054.4547,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie height in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 16,
+            "min": 8734.1736,
+            "max": 9471.7066,
+            "avg": 8920.4196625,
+            "p75": 8874.4433,
+            "p99": 9471.7066,
+            "p995": 9471.7066,
+            "p999": 9471.7066,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie height in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 13309,
+            "min": 34854.0,
+            "max": 95276.0,
+            "avg": 37597.0,
+            "p75": 36904.0,
+            "p99": 62177.0,
+            "p995": 65910.0,
+            "p999": 73424.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie height in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 6548,
+            "min": 73327.0,
+            "max": 133084.0,
+            "avg": 76484.0,
+            "p75": 74883.0,
+            "p99": 104468.0,
+            "p995": 111912.0,
+            "p999": 124877.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie height in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 4366,
+            "min": 108200.0,
+            "max": 274113.0,
+            "avg": 114786.0,
+            "p75": 111169.0,
+            "p99": 159858.0,
+            "p995": 170528.0,
+            "p999": 187417.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie height in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 2850,
+            "min": 161441.0,
+            "max": 496844.0,
+            "avg": 176037.0,
+            "p75": 176827.0,
+            "p99": 359736.0,
+            "p995": 396113.0,
+            "p999": 469831.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple average depth",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1103,
+            "min": 42.5885,
+            "max": 57.4762,
+            "avg": 45.75893916591115,
+            "p75": 47.6817,
+            "p99": 54.744,
+            "p995": 56.0327,
+            "p999": 57.1435,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie average depth in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 54,
+            "min": 1112.5638,
+            "max": 1178.9687,
+            "avg": 1137.2960685185187,
+            "p75": 1147.2843,
+            "p99": 1178.9687,
+            "p995": 1178.9687,
+            "p999": 1178.9687,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie average depth in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 22,
+            "min": 4140.2479,
+            "max": 4230.5967,
+            "avg": 4182.435722727272,
+            "p75": 4199.3725,
+            "p99": 4230.5967,
+            "p995": 4230.5967,
+            "p999": 4230.5967,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie average depth in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 17,
+            "min": 7369.1368,
+            "max": 7640.1136,
+            "avg": 7498.97008235294,
+            "p75": 7568.0086,
+            "p99": 7640.1136,
+            "p995": 7640.1136,
+            "p999": 7640.1136,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie average depth in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 16085,
+            "min": 28874.0,
+            "max": 317408.0,
+            "avg": 31105.0,
+            "p75": 30313.0,
+            "p99": 49787.0,
+            "p995": 54615.0,
+            "p999": 65434.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie average depth in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 7218,
+            "min": 65128.0,
+            "max": 300599.0,
+            "avg": 69371.0,
+            "p75": 67965.0,
+            "p99": 100951.0,
+            "p995": 105882.0,
+            "p999": 126825.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie average depth in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 4719,
+            "min": 98180.0,
+            "max": 421899.0,
+            "avg": 106193.0,
+            "p75": 110117.0,
+            "p99": 147708.0,
+            "p995": 156501.0,
+            "p999": 323799.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie average depth in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 3310,
+            "min": 145950.0,
+            "max": 430021.0,
+            "avg": 151526.0,
+            "p75": 148030.0,
+            "p99": 190361.0,
+            "p995": 205760.0,
+            "p999": 358316.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple prefixes count",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 1118,
+            "min": 43.8904,
+            "max": 58.4403,
+            "avg": 45.13636583184255,
+            "p75": 45.1173,
+            "p99": 51.6,
+            "p995": 53.1597,
+            "p999": 57.1657,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie prefixes count in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 118,
+            "min": 441.9777,
+            "max": 521.4219,
+            "avg": 468.1395338983053,
+            "p75": 478.1639,
+            "p99": 515.5352,
+            "p995": 521.4219,
+            "p999": 521.4219,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie prefixes count in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 39,
+            "min": 1634.3973,
+            "max": 1834.2225,
+            "avg": 1742.9970179487177,
+            "p75": 1783.5466,
+            "p99": 1834.2225,
+            "p995": 1834.2225,
+            "p999": 1834.2225,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie prefixes count in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 27,
+            "min": 2807.3917,
+            "max": 3114.5856,
+            "avg": 2977.5822185185193,
+            "p75": 3048.2938,
+            "p99": 3114.5856,
+            "p995": 3114.5856,
+            "p999": 3114.5856,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie prefixes count in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 43713,
+            "min": 194.0,
+            "max": 112772.0,
+            "avg": 11443.0,
+            "p75": 30493.0,
+            "p99": 41708.0,
+            "p995": 46033.0,
+            "p999": 56048.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie prefixes count in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 21759,
+            "min": 260.0,
+            "max": 161438.0,
+            "avg": 22987.0,
+            "p75": 62654.0,
+            "p99": 86053.0,
+            "p995": 94117.0,
+            "p999": 109232.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie prefixes count in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 14771,
+            "min": 276.0,
+            "max": 194702.0,
+            "avg": 33880.0,
+            "p75": 92894.0,
+            "p99": 127933.0,
+            "p995": 139049.0,
+            "p999": 163408.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie prefixes count in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 9518,
+            "min": 354.0,
+            "max": 303713.0,
+            "avg": 52569.0,
+            "p75": 139979.0,
+            "p99": 195996.0,
+            "p995": 208650.0,
+            "p999": 237427.0,
+            "highPrecision": true,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie simple merge",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 45,
+            "min": 1385.0844,
+            "max": 1520.5375,
+            "avg": 1446.8078688888888,
+            "p75": 1469.0177,
+            "p99": 1520.5375,
+            "p995": 1520.5375,
+            "p999": 1520.5375,
+            "highPrecision": false,
+            "usedExplicitTimers": false
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie merge in tree of 100 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 497,
+            "min": 7915.0,
+            "max": 58981.0,
+            "avg": 11639.0,
+            "p75": 12511.0,
+            "p99": 23445.0,
+            "p995": 30897.0,
+            "p999": 58981.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie merge in tree of 500 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 404,
+            "min": 26704.0,
+            "max": 76807.0,
+            "avg": 34395.0,
+            "p75": 34708.0,
+            "p99": 64150.0,
+            "p995": 70322.0,
+            "p999": 76807.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie merge in tree of 1000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 321,
+            "min": 46905.0,
+            "max": 1245491.0,
+            "avg": 91575.0,
+            "p75": 60279.0,
+            "p99": 554115.0,
+            "p995": 623144.0,
+            "p999": 1245491.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie merge in tree of 5000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 128,
+            "min": 159783.0,
+            "max": 2259755.0,
+            "avg": 300553.0,
+            "p75": 311408.0,
+            "p99": 1554655.0,
+            "p995": 2259755.0,
+            "p999": 2259755.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie merge in tree of 10000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 85,
+            "min": 257204.0,
+            "max": 603261.0,
+            "avg": 345952.0,
+            "p75": 423474.0,
+            "p99": 603261.0,
+            "p995": 603261.0,
+            "p999": 603261.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie merge in tree of 20000 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 46,
+            "min": 438097.0,
+            "max": 2510476.0,
+            "avg": 1004250.0,
+            "p75": 1583394.0,
+            "p99": 2510476.0,
+            "p995": 2510476.0,
+            "p999": 2510476.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    },
+    {
+      "origin": "file:///home/rboudrouss/Documents/projet_algav/src/Patricia/PatriciaTrie.bench.ts",
+      "group": null,
+      "name": "PatriciaTrie merge in tree of 32861 words",
+      "baseline": false,
+      "results": [
+        {
+          "ok": {
+            "n": 34,
+            "min": 994766.0,
+            "max": 1522953.0,
+            "avg": 1230959.0,
+            "p75": 1299795.0,
+            "p99": 1522953.0,
+            "p995": 1522953.0,
+            "p999": 1522953.0,
+            "highPrecision": true,
+            "usedExplicitTimers": true
+          }
+        }
+      ]
+    }
+  ]
+}

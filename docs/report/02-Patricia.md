@@ -54,6 +54,8 @@ La complexité de ces opérations est en $O(n)$ où $n$ est le nombre de noeuds 
 
 NB: Pour la méthode ComptageNil, au vu de notre implémentation les pointeurs nulles sont abstractisés par l'objet `Map` de Javascript, pour le bien de l'exercice nous considérons un `Map` vide comme un pointeur nul.
 
+Nous remarquon effectivement que la complexité est en $O(n)$ dans nos tests.
+
 
 ### Recherche et Suppression
 
@@ -73,6 +75,8 @@ Ainsi, la complexité totale est :
 
 $$ O \left( \sum^{n/m}_{i=1} (1+m) \right) \approx O(n) $$
 
+Dans nos benshmarks, les méthodes sont assez ébruitées, nous supposons qu'au vu du fait que les fonctions s'exécutent très rapidement (de l'ordre de la centaine de nanosecondes), les mesures sont sujettes à des erreurs de mesure et de bruit. Mais si une tendance devait être dégagée, elle aurait l'air logarithmique ?
+
 
 ### Prefixe
 
@@ -90,6 +94,8 @@ La complexité de l'appel final `ComptageMot` dans le pire des cas est $O(n-k) =
 Donc, la complexité totale est :
 
 $$ O \left( \sum^{n/m}_{i=1} (1+m) \right) + O(n) \approx O(n) $$
+
+Dans nos benshmarks, nous remarquons bien la tendance linéaire de la méthode.
 
 
 ### Fusion
@@ -122,6 +128,7 @@ En cas de conflit (préfixes communs), on :
 
 La fonction est appelée récursivement pour chaque enfant. Le nombre total d'appels récursifs est proportionnel au nombre total de noeuds $n_2$ dans le second Patricia-Trie.
 
+
 #### 4. Conclusion
 
 
@@ -129,7 +136,8 @@ Chaque enfant dans node est traité en $O(m)$ dans le pire cas, en tenant compte
 
 $$ O \left( n_2 \times m \right) $$
 
-Dans le pire cas où tous les labels ont des longueurs similaires, mm est une constante, et la complexité devient linéaire en fonction du nombre de noeuds dans le second Patricia-Trie :
+Dans le pire cas où tous les labels ont des longueurs similaires, $m$ est une constante, et la complexité devient linéaire en fonction du nombre de noeuds dans le second Patricia-Trie :
 
 $$ O(n_2) $$
 
+Dans nos benshmarks, nous remarquons bien la tendance linéaire de la méthode.

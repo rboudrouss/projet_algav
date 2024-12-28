@@ -43,6 +43,8 @@ Nous avons choisi d'utiliser **Typescript** car il permet de définir des types 
 - `Shakespeare/` contient les texts de Shakespeare (fournis par l'énoncé et utilisés pour les tests et les benchmarks)
 
 Au root du projet, on trouve aussi :
+
+
 - `deno.json` et `deno.lock` les fichiers de configuration de Deno
 - `README.md` 
 - `rapport.pdf` le rapport généré (que vous êtes en train de lire)

@@ -56,6 +56,8 @@ Ces opérations procédent de la même manière, elles parcourent l'arbre en pro
 Que ce soit dans le pire des cas ou dans le meilleur des cas, nous sommes obligés de parcourir tous les noeuds de l'arbre pour effectuer ces opérations.
 La complexité de ces opérations est en $O(n)$ où $n$ est le nombre de noeuds de l'arbre.
 
+Dans nos benshmarks, nous avons effectivement observé que la complexité est en $O(n)$.
+
 
 ### Recherche et Suppression
 
@@ -70,25 +72,34 @@ Pour chaque caractère du mot on peut soit rechercher à droite ou à gauche soi
 
 Pour un mot de longueur $m$, la recherche nécessite $m$ recherches de caractères. La complexité de la recherche est donc:
 
-$$ O(m \times \text{log}  n) $$
+$$ O(m \times log  n) $$
 
 À noter que dans le pire des cas (un arbre dégénéré, où $h ~ n$), la complexité de la recherche est en $O(n)$ car il est en effet possible de parcourir tous les noeuds de l'arbre pour trouver le mot. (ex: trouver le mot "z" dans un arbre où on a inséré les mots "a", "b", "c", ..., "y", "z")
 
+Dans nos benchmarks, la méthode de recherche est ébruitée, mais nous pouvons observer la complexité logaritmique.
+
+Ceci dit pour la méthode de suppression, notre graphique pointe plutôt vers une complexité en $O(n)$. Nous ne saurons pas expliquer pourquoi la suppression est plus lente que la recherche, alors qu'une bonne partie de l'algorithme est commune aux deux méthodes.
+
+
 ### Prefixe
+
 
 La fonction Prefixe est une combinaison de la methode de recherche et de la methode de comptage, vu qu'elle fonctionne en cherchant le prefixe et en comptant le nombre de mots qui ont ce prefixe. La complexité de cette fonction est donc en :
 
-$$ O(m \times \text{log}  n) + O(n_\text{sous_arbre}) $$
+$$ O(m \times log  n) + O(n_{sousarbre}) $$
 
-où $n_\text{sous_arbre}$ est le nombre de noeuds du sous-arbre qui contient les mots qui ont le prefixe.
+où $n_{sousarbre}$ est le nombre de noeuds du sous-arbre qui contient les mots qui ont le prefixe.
 
 À noter qu'il y a plusieurs cas particuliers :
 
-- Si le prefixe n'est pas dans l'arbre, la complexité est en $O(m \times \text{log} n)$ vu qu'il y a pas d'appel à la fonction `ComptageMot`.
+- Si le prefixe n'est pas dans l'arbre, la complexité est en $O(m \times {log} n)$ vu qu'il y a pas d'appel à la fonction `ComptageMot`.
 
-- Cas où l'arbre est dégénéré, la complexité de la recherche est en $O(n)$ donc la complexité de la fonction est en $O(n)$ car $n$ prédomine $n_\text{sous_arbre}$.
+- Cas où l'arbre est dégénéré, la complexité de la recherche est ein $O(n)$ donc la complexité de la fonction est en $O(n)$ car $n$ prédomine $n_{sousarbre}$.
 
-- Cas grand sous arbre (peut arriver si le prefix est de petite taille), la complexité de la fonction est en $O(n_\text{sous_arbre})$ car $n_\text{sous_arbre}$ prédomine $m \times \text{log} n$.
+- Cas grand sous arbre (peut arriver si le prefix est de petite taille), la complexité de la fonction est en $O(n_{sousarbre})$ car $n_{sousarbre}$ prédomine $m \times {log} n$.
+
+Dans nos benchmarks, nous avons observé une complexité proche du $O(m \times log  n)$ mais pas assez claire pour être affirmatif.
+
 
 ### Equilibrage
 
@@ -100,5 +111,24 @@ L'équilibrage est fait en utilisant la méthode `balance` qui est appellé pour
 - Si le facteur d'équilibre est supérieur à 1, on fait une rotation droite
 - Si le facteur d'équilibre est inférieur à -1, on fait une rotation gauche
 
-À noter que notre méthode d'équilibrage peut être améliorée en stockant la hauteur de chaque noeud pour éviter de recalculer la hauteur à chaque appel de la méthode `height`. Cela permettrait de réduire énormément le temps de calcul de l'équilibrage.
+
+La fonction `getBalanceFactor` a pour complexité $O(h)$ où $h$ est la hauteur du sous-arbre. En effet, elle fait appel à la fonction `height` qui a une complexité en $O(h)$.
+
+À chaque appel de la méthode `balance` nous faisons : 
+
+- Un appel à `getBalanceFactor` qui a une complexité en $O(h)$
+
+- Si cela correspond à un cas de rotation, nous faison une rotation qui ont une complexité en $O(1)$
+
+
+La complexité de l'équilibrage est donc dominée par la complexité de `getBalanceFactor` qui est en $O(h)$.
+
+Sachant que notre algorithme d'équilibrage est appelé à noeud où passe l'insertion, la complexité de l'équilibrage est en $O(h^2)$ où $h$ est la hauteur de l'arbre.
+
+À noter que notre méthode d'équilibrage peut être améliorée en stockant la hauteur de chaque noeud pour éviter de recalculer la hauteur à chaque appel de la méthode `height` (appelé par `getBalanceFactor`). Cela permettrait de réduire énormément le temps de calcul de l'équilibrage.
+
+Dans nos benchmarks, nous avons observé que l'équilibrage permet de réduire la hauteur de l'arbre et donc de réduire la complexité des opérations de recherche, de suppression et de prefixe. Cependant pas de manière significative. En effet, un arbre Hybride par ajout de mots est proche d'un arbre équilibré, le cas des arbres dégénérés est rare,donc l'équilibrage n'apporte pas de grand changement.
+
+Ceci dit, l'équilibrage ralenti remarquablement l'insertion, jusqu'à 1000 fois plus lent que sans équilibrage. 
+
 

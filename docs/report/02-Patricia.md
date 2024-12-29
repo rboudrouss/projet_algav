@@ -106,7 +106,7 @@ Dans nos benshmarks, nous remarquons bien la tendance linéaire de la méthode.
 
 Pour chaque noeud du second Patricia-Trie (node), on effectue les opérations suivantes :
 
-- Vérification si la clé existe déjà dans this.children. Cette opération est $O(1)$ grâce à la structure Map.
+- Vérification si la clé existe déjà dans `this.children`. Cette opération est $O(1)$ grâce à la structure Map.
 
 - Si elle n'existe pas, l'enfant est ajouté directement, ce qui est également $O(1)$.
 

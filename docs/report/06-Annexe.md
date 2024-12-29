@@ -3,58 +3,49 @@
 # 5. Annexe
 
 
-## PatriciaTrie
+![Benchmark des méthodes ComptageMot, Hauteur, ProfondeurMoyenne d'un Patricia Trie](./imgs/patricia_count_height_depth.png)
 
 
-![Benchmark des méthodes ComptageMot, Hauteur, ProfondeurMoyenne](./imgs/patricia_count_height_depth.png)
+![Benchmark de la méthode ListeMots d'un Patricia Trie](./imgs/patricia_listwords.png)
 
 
-![Benchmark de la méthode ListeMots](./imgs/patricia_listwords.png)
+![Benchmark de la méthode Recherche d'un Patricia Trie](./imgs/patricia_searchP.png)
 
 
-![Benchmark de la méthode Recherche](./imgs/patricia_searchP.png)
+![Benchmark de la méthode Suppression d'un Patricia Trie](./imgs/patricia_deletion.png)
 
 
-![Benchmark de la méthode Suppression](./imgs/patricia_deletion.png)
+![Benchmark de la méthode Prefixe d'un Patricia Trie](./imgs/patricia_prefix.png)
 
 
-![Benchmark de la méthode Prefixe](./imgs/patricia_prefix.png)
+![Benchmark de la méthode Fusion d'un Patricia Trie](./imgs/patricia_merge.png)
 
 
-![Benchmark de la méthode Fusion](./imgs/patricia_merge.png)
+
+![Benchmark des méthodes ComptageMot, Hauteur, ProfondeurMoyenne d'un Trie Hybrid](./imgs/hybridWout_CHA.png)
 
 
-## HybridTrie
+![Benchmark de la méthode Recherche d'un Trie Hybrid](./imgs/hybridWout_positiveS.png)
 
 
-![Benchmark des méthodes ComptageMot, Hauteur, ProfondeurMoyenne](./imgs/hybridWout_CHA.png)
+![Benchmark de la méthode Suppression d'un Trie Hybrid](./imgs/hybridWout_supression.png)
 
 
-![Benchmark de la méthode Recherche](./imgs/hybridWout_positiveS.png)
+![Benchmark de la méthode Prefixe d'un Trie Hybrid](./imgs/hybridWout_prefix.png)
 
 
-![Benchmark de la méthode Suppression](./imgs/hybridWout_supression.png)
+![Benchmark de la méthode Insertion sans équilibrage d'un Trie Hybrid](./imgs/hybridWout_insertion.png)
 
 
-![Benchmark de la méthode Prefixe](./imgs/hybridWout_prefix.png)
+
+![Benchmark de la méthode insertion avec équilibrage d'un Trie Hybrid](./imgs/hybridW_insertion.png)
 
 
-![Benchmark de la méthode Insertion sans équilibrage](./imgs/hybridWout_insertion.png)
+![Benchmark Comparaison de la recherche d'un Trie Hybrid](./imgs/hybridW_search.png)
 
 
-### Balance
+![Benchmark Comparaison de la methode list words d'un Trie Hybrid](./imgs/hybridW_listwords.png)
 
-
-![Benchmark Comparaison de la recherche](./imgs/hybridW_search.png)
-
-
-![Benchmark Comparaison de la methode list words](./imgs/hybridW_listwords.png)
-
-
-![Benchmark de la méthode insertion avec équilibrage](./imgs/hybridW_insertion.png)
-
-
-## Comparaison
 
 
 ![Comparaison des Insertions](./imgs/comparaison_insertion.png)

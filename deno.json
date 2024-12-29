@@ -3,6 +3,7 @@
     "dev": "deno run --allow-read=. --allow-write=. ./src/dev.ts",
     "cli": "deno run --allow-read=. --allow-write=. ./src/cli.ts",
     "start": "deno run cli",
-    "bench": "deno bench --allow-read --allow-write"
+    "bench": "deno bench --allow-read --allow-write",
+    "zip": "zip -r archive.zip . -x '.*/*'"
   }
 }
